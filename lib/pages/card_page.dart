@@ -376,7 +376,7 @@ class _CardPageState extends State<CardPage> {
                           ),
                         ),
                         child: Text(
-                          'testess',
+                          'testes',
                           style: GoogleFonts.metrophobic(
                             color: Colors.black,
                             fontStyle: FontStyle.normal,

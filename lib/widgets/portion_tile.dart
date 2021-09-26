@@ -1,42 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:ia_card/models/drink.dart';
+import 'package:ia_card/models/portion.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ia_card/pages/drink_detail.dart';
+import 'package:ia_card/pages/portion_detail.dart';
 
 
-class DrinkTile extends StatelessWidget {
+class PortionTile extends StatelessWidget {
 
-  final Drink drink;
+  final Portion portion;
 
-  const DrinkTile(this.drink);
+  const PortionTile(this.portion);
 
-  get index => this.drink;
+  get index => this.portion;
 
 
   @override
   Widget build(BuildContext context) {
   
 
-    final image = Image.network(drink.image);
+    final image = Image.network(portion.image);
     return ListTile(
     leading: image,
-    title: Text(drink.name,
+    title: Text(portion.name,
     style: GoogleFonts.metrophobic(
               fontStyle: FontStyle.normal,
               fontSize: 16
             ),),
-    subtitle: Text(drink.desc,
+    subtitle: Text(portion.desc,
     style: GoogleFonts.metrophobic(
               fontStyle: FontStyle.normal,
             ),),
-    trailing: Text("R\$ "+ drink.value,
+    trailing: Text("R\$ "+ portion.value,
    style: GoogleFonts.metrophobic(
               fontStyle: FontStyle.normal,
               fontSize: 18
             ),),
 
             onTap: (){
-                   Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DrinkDetail(drinkDataModel: index,)));
+                   Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PortionDetail(portionDataModel: index,)));
                  },
    
     );

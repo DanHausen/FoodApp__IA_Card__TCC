@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
+import 'package:ia_card/data/teste_portion.dart';
+import 'package:ia_card/widgets/portion_tile.dart';
 
 class PortionPage extends StatefulWidget {
   @override
   _PortionPageState createState() => _PortionPageState();
 }
+
+final portion = {...TESTE_PORTION};
 class _PortionPageState extends State<PortionPage> {
   SearchBar searchBar;
   
@@ -36,30 +40,14 @@ class _PortionPageState extends State<PortionPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: searchBar.build(context),
-      body: _buildBody(),
+      body: 
+        ListView.builder(
+        itemCount: portion.length,
+        itemBuilder: (ctx, i) => PortionTile(portion.values.elementAt(i)),
+        
+      )
     );
   }
 
-  _buildBody() {
-    
-   return Align(
-     alignment: Alignment.center,
-      child: 
-           Container(
-       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text('Em construção', 
-            style: GoogleFonts.metrophobic(
-            fontStyle: FontStyle.normal,
-            fontSize: 25
-            )
-          ),
-        ],
-      ),
-        ),
-    );
-  }
+  
   }

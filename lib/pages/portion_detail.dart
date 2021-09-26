@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:ia_card/models/drink.dart';
+import 'package:ia_card/models/portion.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
-class DrinkDetail extends StatelessWidget {
-  final Drink drinkDataModel;
+class PortionDetail extends StatelessWidget {
+  final Portion portionDataModel;
   // ignore: non_constant_identifier_names
-  const DrinkDetail({Key key, @required this.drinkDataModel}) : super(key: key);
+  const PortionDetail({Key key, @required this.portionDataModel}) : super(key: key);
   @override
 
 
@@ -38,12 +38,12 @@ class DrinkDetail extends StatelessWidget {
         padding: const EdgeInsets.all(40.0),
         alignment: Alignment.topCenter,
         child: 
-          Image.network(drinkDataModel.image),),
+          Image.network(portionDataModel.image),),
         new Container(
           decoration: new BoxDecoration(color: Colors.white),
             padding: const EdgeInsets.symmetric(horizontal: 30),
             alignment: Alignment.topLeft,
-            child: new Text(drinkDataModel.name,style:  GoogleFonts.metrophobic(fontWeight: FontWeight.bold,fontSize: 20, color: Colors.black),),
+            child: new Text(portionDataModel.name,style:  GoogleFonts.metrophobic(fontWeight: FontWeight.bold,fontSize: 20, color: Colors.black),),
             
           ),
 
@@ -54,7 +54,7 @@ class DrinkDetail extends StatelessWidget {
           decoration: new BoxDecoration(color: Colors.white),
             padding: const EdgeInsets.symmetric(horizontal: 40),
             alignment: Alignment.topLeft,
-            child: Text(drinkDataModel.desc,style:  GoogleFonts.metrophobic(fontWeight: FontWeight.bold,fontSize: 18, color: Colors.grey ,
+            child: Text(portionDataModel.desc,style:  GoogleFonts.metrophobic(fontWeight: FontWeight.bold,fontSize: 18, color: Colors.grey ,
             
           ),
         ),
@@ -66,7 +66,7 @@ class DrinkDetail extends StatelessWidget {
           decoration: new BoxDecoration(color: Colors.white),
             padding: const EdgeInsets.symmetric(horizontal: 40),
             alignment: Alignment.topLeft,
-            child: Text("Filtros: " + drinkDataModel.filtros,style:  GoogleFonts.metrophobic(fontWeight: FontWeight.bold,fontSize: 13, color: Colors.grey ,
+            child: Text("Filtros: " + portionDataModel.filtros,style:  GoogleFonts.metrophobic(fontWeight: FontWeight.bold,fontSize: 13, color: Colors.grey ,
             
           ),
         ),
@@ -99,7 +99,7 @@ class DrinkDetail extends StatelessWidget {
           decoration: new BoxDecoration(color: Colors.white),
             padding: const EdgeInsets.symmetric(horizontal: 40),
             alignment: Alignment.topLeft,
-            child: Text('R\$ ' + drinkDataModel.value,style:  GoogleFonts.metrophobic(fontWeight: FontWeight.bold,fontSize: 18, color: Colors.black ,
+            child: Text('R\$ ' + portionDataModel.value,style:  GoogleFonts.metrophobic(fontWeight: FontWeight.bold,fontSize: 18, color: Colors.black ,
             
           ),
         ),

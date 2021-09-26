@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'IA Card',
-        theme: new ThemeData(scaffoldBackgroundColor: const Color(0xFFEFEFEF)),
+        theme: new ThemeData(scaffoldBackgroundColor: Colors.white),
         home: CustomSplash(
           imagePath: 'assets/images/logo.png',
           backGroundColor: Color.fromRGBO(255, 161, 73, 1),
