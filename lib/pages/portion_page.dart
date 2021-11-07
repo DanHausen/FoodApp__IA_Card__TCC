@@ -22,7 +22,6 @@ class _PortionPageState extends State<PortionPage> {
             fontStyle: FontStyle.normal,
             fontSize: 40
             )),
-      actions: [searchBar.getSearchAction(context)],
       backgroundColor: Color.fromRGBO(255, 161, 73, 1),
     );
   }  
