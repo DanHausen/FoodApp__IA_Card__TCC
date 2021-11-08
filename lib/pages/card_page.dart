@@ -91,7 +91,7 @@ class _CardPageState extends State<CardPage> {
         children: <Widget>[
           Container(
             child: ButtonTheme(
-                buttonColor: Color.fromRGBO(255, 234, 215, 1),
+                buttonColor: Colors.white,
                 child: Stack(children: [
                   Container(
                     width: 170,
@@ -103,13 +103,14 @@ class _CardPageState extends State<CardPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0),
                           side: BorderSide(
-                            color: Colors.transparent,
+                            width: 2,
+                            color: Colors.orange,
                           ),
                         ),
                         child: Text(
                           'Bebidas',
                           style: GoogleFonts.metrophobic(
-                            color: Colors.black,
+                            color: Colors.grey[700],
                             fontStyle: FontStyle.normal,
                             fontSize: 18.0,
                           ),
@@ -138,7 +139,7 @@ class _CardPageState extends State<CardPage> {
           ),
           Container(
             child: ButtonTheme(
-                buttonColor: Color.fromRGBO(255, 234, 215, 1),
+                buttonColor: Colors.white,
                 child: Stack(children: [
                   Container(
                     width: 170,
@@ -150,13 +151,14 @@ class _CardPageState extends State<CardPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0),
                           side: BorderSide(
-                            color: Colors.transparent,
+                            width: 2,
+                            color: Colors.orange,
                           ),
                         ),
                         child: Text(
                           'Porções',
                           style: GoogleFonts.metrophobic(
-                            color: Colors.black,
+                            color: Colors.grey[700],
                             fontStyle: FontStyle.normal,
                             fontSize: 18.0,
                           ),
@@ -185,7 +187,7 @@ class _CardPageState extends State<CardPage> {
           ),
           Container(
             child: ButtonTheme(
-                buttonColor: Color.fromRGBO(255, 234, 215, 1),
+                buttonColor: Colors.white,
                 child: Stack(children: [
                   Container(
                     width: 170,
@@ -197,13 +199,14 @@ class _CardPageState extends State<CardPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0),
                           side: BorderSide(
-                            color: Colors.transparent,
+                            width: 2,
+                            color: Colors.orange,
                           ),
                         ),
                         child: Text(
                           'Lanches',
                           style: GoogleFonts.metrophobic(
-                            color: Colors.black,
+                            color: Colors.grey[700],
                             fontStyle: FontStyle.normal,
                             fontSize: 18.0,
                           ),
@@ -232,7 +235,7 @@ class _CardPageState extends State<CardPage> {
           ),
           Container(
             child: ButtonTheme(
-                buttonColor: Color.fromRGBO(255, 234, 215, 1),
+                buttonColor: Colors.white,
                 child: Stack(children: [
                   Container(
                     width: 170,
@@ -244,13 +247,14 @@ class _CardPageState extends State<CardPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0),
                           side: BorderSide(
-                            color: Colors.transparent,
+                            width: 2,
+                            color: Colors.orange,
                           ),
                         ),
                         child: Text(
                           'A la carte',
                           style: GoogleFonts.metrophobic(
-                            color: Colors.black,
+                            color: Colors.grey[700],
                             fontStyle: FontStyle.normal,
                             fontSize: 18.0,
                           ),
@@ -279,8 +283,9 @@ class _CardPageState extends State<CardPage> {
           ),
           Container(
             child: ButtonTheme(
-                buttonColor: Color.fromRGBO(255, 234, 215, 1),
-                child: Stack(children: [
+              buttonColor: Colors.white,
+              child: Stack(
+                children: [
                   Container(
                     width: 170,
                     height: 40.0,
@@ -291,13 +296,14 @@ class _CardPageState extends State<CardPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0),
                           side: BorderSide(
-                            color: Colors.transparent,
+                            width: 2,
+                            color: Colors.orange,
                           ),
                         ),
                         child: Text(
                           'Saladas',
                           style: GoogleFonts.metrophobic(
-                            color: Colors.black,
+                            color: Colors.grey[700],
                             fontStyle: FontStyle.normal,
                             fontSize: 18.0,
                           ),
@@ -322,12 +328,15 @@ class _CardPageState extends State<CardPage> {
                       height: 50.0,
                     ),
                   )
-                ])),
+                ],
+              ),
+            ),
           ),
           Container(
             child: ButtonTheme(
-                buttonColor: Color.fromRGBO(255, 234, 215, 1),
-                child: Stack(children: [
+              buttonColor: Colors.white,
+              child: Stack(
+                children: [
                   Container(
                     width: 170,
                     height: 40.0,
@@ -338,13 +347,14 @@ class _CardPageState extends State<CardPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0),
                           side: BorderSide(
-                            color: Colors.transparent,
+                            width: 2,
+                            color: Colors.orange,
                           ),
                         ),
                         child: Text(
                           'Sobremesas',
                           style: GoogleFonts.metrophobic(
-                            color: Colors.black,
+                            color: Colors.grey[700],
                             fontStyle: FontStyle.normal,
                             fontSize: 18.0,
                           ),
@@ -369,54 +379,9 @@ class _CardPageState extends State<CardPage> {
                       height: 50.0,
                     ),
                   )
-                ])),
-          ),
-          Container(
-            child: ButtonTheme(
-                buttonColor: Color.fromRGBO(255, 234, 215, 1),
-                child: Stack(children: [
-                  Container(
-                    width: 170,
-                    height: 40.0,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      // ignore: deprecated_member_use
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                          side: BorderSide(
-                            color: Colors.transparent,
-                          ),
-                        ),
-                        child: Text(
-                          'testes',
-                          style: GoogleFonts.metrophobic(
-                            color: Colors.black,
-                            fontStyle: FontStyle.normal,
-                            fontSize: 18.0,
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => TestePage()),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    // image in right
-                    top: 0,
-                    right: 100,
-                    child: new Image.asset(
-                      'assets/images/categories/sobremesas.png',
-                      width: 50.0,
-                      height: 50.0,
-                    ),
-                  )
-                ])),
+                ],
+              ),
+            ),
           ),
         ],
       ),
@@ -453,7 +418,7 @@ class _CardPageState extends State<CardPage> {
     );
   }
 
-  _buildVerticalSpace({double height = 40.0}) {
+  _buildVerticalSpace({double height = 20.0}) {
     return SizedBox(height: height);
   }
 }
