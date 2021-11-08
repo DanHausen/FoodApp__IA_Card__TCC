@@ -15,16 +15,13 @@ class DrinkDetail extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Color.fromRGBO(255, 161, 73, 1),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.shopping_basket,
+          Padding(
+            padding: const EdgeInsets.only(right: 30.0),
+            child: IconButton(
+              icon: Icon(Icons.shopping_basket, size: 35),
               color: Colors.white,
+              onPressed: () {},
             ),
-            onPressed: (
-                //TODO
-                ) {
-              // do something
-            },
           )
         ],
       ),

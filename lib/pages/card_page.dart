@@ -5,7 +5,7 @@ import 'package:ia_card/pages/drink_page.dart';
 import 'package:ia_card/pages/portion_page.dart';
 import 'package:ia_card/pages/salad_page.dart';
 import 'package:ia_card/pages/sandwich_page.dart';
-import 'TestePage.dart';
+import 'package:ia_card/pages/cart_page.dart';
 import 'dessert_page.dart';
 import 'la_carte_page.dart';
 
@@ -22,7 +22,7 @@ class _CardPageState extends State<CardPage> {
       toolbarHeight: 150,
       centerTitle: true,
       leading: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40.0),
+        padding: const EdgeInsets.only(left: 30.0),
         child: IconButton(
           icon: Icon(Icons.search, size: 35),
           onPressed: () {},
@@ -31,7 +31,21 @@ class _CardPageState extends State<CardPage> {
       title: new Text('Restaurante',
           style: GoogleFonts.passionOne(
               fontStyle: FontStyle.normal, fontSize: 40)),
-      //actions: //TODO Adicionar o carrinho aqui,
+      actions: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(right: 30.0),
+          child: IconButton(
+            icon: Icon(Icons.shopping_basket, size: 35),
+            color: Colors.white,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CartPage()),
+              );
+            },
+          ),
+        )
+      ],
       backgroundColor: Color.fromRGBO(255, 161, 73, 1),
     );
   }

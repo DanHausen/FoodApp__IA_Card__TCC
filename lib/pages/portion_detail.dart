@@ -16,16 +16,13 @@ class PortionDetail extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Color.fromRGBO(255, 161, 73, 1),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.shopping_basket,
+          Padding(
+            padding: const EdgeInsets.only(right: 30.0),
+            child: IconButton(
+              icon: Icon(Icons.shopping_basket, size: 35),
               color: Colors.white,
+              onPressed: () {},
             ),
-            onPressed: (
-                //TODO
-                ) {
-              // do something
-            },
           )
         ],
       ),
@@ -139,12 +136,10 @@ class ProductPage extends StatelessWidget {
                 decoration: InputDecoration(
                   labelStyle: TextStyle(color: Colors.grey[700]),
                   focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.grey[700], width: 1.5),
+                    borderSide: BorderSide(color: Colors.grey[700], width: 1.5),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.grey[700], width: 1.5),
+                    borderSide: BorderSide(color: Colors.grey[700], width: 1.5),
                   ),
                   border: OutlineInputBorder(),
                   labelText: 'obs: ',
