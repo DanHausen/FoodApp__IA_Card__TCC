@@ -12,10 +12,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'IA Card',
-        theme: new ThemeData(scaffoldBackgroundColor: Colors.orange),
+        theme: new ThemeData(scaffoldBackgroundColor: Colors.white),
         home: CustomSplash(
           imagePath: 'assets/images/logo.png',
-          backGroundColor: Color.fromRGBO(255, 161, 73, 1),
+          backGroundColor: Colors.orange,
           animationEffect: 'zoom-in',
           logoSize: 200,
           home: CardPage(),

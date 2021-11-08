@@ -21,10 +21,17 @@ class _CardPageState extends State<CardPage> {
     return new AppBar(
       toolbarHeight: 150,
       centerTitle: true,
+      leading: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 40.0),
+        child: IconButton(
+          icon: Icon(Icons.search, size: 35),
+          onPressed: () {},
+        ),
+      ),
       title: new Text('Restaurante',
           style: GoogleFonts.passionOne(
               fontStyle: FontStyle.normal, fontSize: 40)),
-      actions: [searchBar.getSearchAction(context)],
+      //actions: //TODO Adicionar o carrinho aqui,
       backgroundColor: Color.fromRGBO(255, 161, 73, 1),
     );
   }
