@@ -7,12 +7,20 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Color.fromRGBO(255, 161, 73, 1),
-          toolbarHeight: 100,
-          centerTitle: true,
-          title: new Text('Seu carrinho',
+        backgroundColor: Color.fromRGBO(255, 161, 73, 1),
+        toolbarHeight: 100,
+        centerTitle: true,
+        title: Column(
+          children: [
+            Text(
+              'Seu carrinho',
               style: GoogleFonts.passionOne(
-                  fontStyle: FontStyle.normal, fontSize: 40))),
+                  fontStyle: FontStyle.normal, fontSize: 40),
+            ),
+            Text("X items")
+          ],
+        ),
+      ),
     );
   }
 }
