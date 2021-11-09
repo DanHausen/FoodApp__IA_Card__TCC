@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ia_card/models/drink.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+int qtdeItems = 1;
+
 class DrinkDetail extends StatelessWidget {
   final Drink drinkDataModel;
   // ignore: non_constant_identifier_names
@@ -30,7 +32,7 @@ class DrinkDetail extends StatelessWidget {
   }
 }
 
-class ProductPage extends StatelessWidget {
+class ProductPage extends StatefulWidget {
   const ProductPage({
     Key key,
     @required this.drinkDataModel,
@@ -38,6 +40,11 @@ class ProductPage extends StatelessWidget {
 
   final Drink drinkDataModel;
 
+  @override
+  State<ProductPage> createState() => _ProductPageState();
+}
+
+class _ProductPageState extends State<ProductPage> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -47,7 +54,7 @@ class ProductPage extends StatelessWidget {
             decoration: new BoxDecoration(color: Colors.white),
             padding: const EdgeInsets.all(40.0),
             alignment: Alignment.topCenter,
-            child: Image.network(drinkDataModel.image),
+            child: Image.network(widget.drinkDataModel.image),
           ),
           Row(
             children: [
@@ -60,7 +67,7 @@ class ProductPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: new Text(
-                      drinkDataModel.name,
+                      widget.drinkDataModel.name,
                       style: GoogleFonts.metrophobic(
                           fontWeight: FontWeight.w300,
                           fontSize: 25,
@@ -78,7 +85,7 @@ class ProductPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: Text(
-                      'R\$ ' + drinkDataModel.value,
+                      'R\$ ' + widget.drinkDataModel.value,
                       style: GoogleFonts.metrophobic(
                         fontWeight: FontWeight.w900,
                         fontSize: 25,
@@ -107,7 +114,7 @@ class ProductPage extends StatelessWidget {
             padding: const EdgeInsets.only(left: 40, top: 10),
             alignment: Alignment.topLeft,
             child: Text(
-              drinkDataModel.desc,
+              widget.drinkDataModel.desc,
               style: GoogleFonts.metrophobic(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
@@ -120,7 +127,7 @@ class ProductPage extends StatelessWidget {
             padding: const EdgeInsets.only(left: 40, bottom: 10),
             alignment: Alignment.topLeft,
             child: Text(
-              "Filtros: " + drinkDataModel.filtros,
+              "Filtros: " + widget.drinkDataModel.filtros,
               style: GoogleFonts.metrophobic(
                 fontWeight: FontWeight.normal,
                 fontSize: 13,
@@ -158,7 +165,14 @@ class ProductPage extends StatelessWidget {
                   child: Row(
                     children: [
                       InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            //Adicionei o setState para atualizar o valor
+                            if (qtdeItems > 1) {
+                              setState(() {
+                                qtdeItems--;
+                              });
+                            }
+                          },
                           child: Icon(
                             Icons.remove,
                             color: Colors.black54,
@@ -170,7 +184,7 @@ class ProductPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8),
                             color: Colors.black12),
                         child: Text(
-                          ' 1 ',
+                          qtdeItems.toString(),
                           style: GoogleFonts.roboto(
                               color: Colors.black,
                               fontSize: 20,
@@ -178,7 +192,11 @@ class ProductPage extends StatelessWidget {
                         ),
                       ),
                       InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            setState(() {
+                              qtdeItems++;
+                            });
+                          },
                           child: Icon(
                             Icons.add,
                             color: Colors.black54,
