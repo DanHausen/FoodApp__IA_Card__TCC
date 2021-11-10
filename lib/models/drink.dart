@@ -1,8 +1,6 @@
-
 import 'package:flutter/cupertino.dart';
 
 class Drink {
-
   final String name;
   final int id;
   final String filtros;
@@ -17,6 +15,5 @@ class Drink {
     @required this.desc,
     @required this.image,
     @required this.value,
-
   });
 }
