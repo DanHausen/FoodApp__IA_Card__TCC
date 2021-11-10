@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:custom_splash/custom_splash.dart';
+import 'constants.dart';
 import 'pages/card_page.dart';
 
 void main() {
@@ -12,7 +13,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'IA Card',
-        theme: new ThemeData(scaffoldBackgroundColor: Colors.white),
+        theme: new ThemeData(
+          scaffoldBackgroundColor: Colors.white,
+          textTheme: TextTheme(
+            bodyText1: TextStyle(color: kTextColor),
+            bodyText2: TextStyle(color: kTextColor),
+          ),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
         home: CustomSplash(
           imagePath: 'assets/images/logo.png',
           backGroundColor: Colors.orange,
