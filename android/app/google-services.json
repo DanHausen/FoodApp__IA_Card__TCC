@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "286898325049",
-    "project_id": "teste-desc",
-    "storage_bucket": "teste-desc.appspot.com"
+    "project_number": "1059153884506",
+    "project_id": "foodapp-card",
+    "storage_bucket": "foodapp-card.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:286898325049:android:6665388cb11c1a4df22fe8",
+        "mobilesdk_app_id": "1:1059153884506:android:71142a0a45ced5998b2f63",
         "android_client_info": {
           "package_name": "com.tcc.foodapp.iacard"
         }
       },
       "oauth_client": [
         {
-          "client_id": "286898325049-soote0vp9ftsuk17bp1ba4t270ntn22g.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.tcc.foodapp.iacard",
-            "certificate_hash": "4467e43c16412d38204175b7280617ab44563945"
-          }
-        },
-        {
-          "client_id": "286898325049-pfhrvkfb8cc85r3dk9q5euv3rgr8orcu.apps.googleusercontent.com",
+          "client_id": "1059153884506-imgjek5h3iaud5859ms4hd5a3el8g7s7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCv9rKh0sgC7AtcrUm7TMfM3qcmeyvAE3c"
+          "current_key": "AIzaSyDIEBhf5cnAV_-9Zy4aMWx1o0R-OgI006o"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "286898325049-pfhrvkfb8cc85r3dk9q5euv3rgr8orcu.apps.googleusercontent.com",
+              "client_id": "1059153884506-imgjek5h3iaud5859ms4hd5a3el8g7s7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
