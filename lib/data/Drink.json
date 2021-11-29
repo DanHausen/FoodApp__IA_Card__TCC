@@ -1,0 +1,9 @@
+{
+    "Drink":{
+        "01":{
+            "name": "Guarana",
+            "price": "5",
+            "image": "https://formulachopp.cdn.3techstore.com.br/img/p/1/1/6/8/6/11686-thickbox_default.jpg"
+        }
+    }
+}
