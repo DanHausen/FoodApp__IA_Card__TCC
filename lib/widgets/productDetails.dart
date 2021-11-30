@@ -5,7 +5,6 @@ class ProductDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold();
-    throw UnimplementedError();
   }
 }
 

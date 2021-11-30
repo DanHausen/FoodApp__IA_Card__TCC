@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ia_card/models/drink.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ia_card/models/Cart.dart';
 
 int qtdeItems = 1;
 
@@ -220,7 +221,10 @@ class _ProductPageState extends State<ProductPage> {
                             color: Colors.white, fontWeight: FontWeight.w900),
                       ),
                       onPressed: () {
-                        
+                        //TODO
+                        Cart.cartList.add(widget.drinkDataModel.name);
+                        print(Cart.cartList);
+                        Cart.cartList.clear();
                       },
                     ),
                   )),
