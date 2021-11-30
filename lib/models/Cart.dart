@@ -1,3 +1,5 @@
+//TODO Estou fazendo o map do carrinho funcionar
+
 class Cart {
   static var cartList = new Map();
 
@@ -11,9 +13,11 @@ class Cart {
     };
     Cart.cartList[x] = item;
     x++;
-    // Cart.cartList.forEach((key, value) {
-    //   print(key);
-    // });
+    Cart.cartList.forEach((key, value) {
+      if (value["Name"] == name) {
+        value["Quantidade"] += qtdeItems;
+      }
+    });
     print(cartList);
   }
 }
