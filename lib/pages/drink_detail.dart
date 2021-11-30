@@ -46,6 +46,8 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
+  var item = new Map();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -221,10 +223,8 @@ class _ProductPageState extends State<ProductPage> {
                             color: Colors.white, fontWeight: FontWeight.w900),
                       ),
                       onPressed: () {
-                        //TODO
-                        Cart.cartList.add(widget.drinkDataModel.name);
-                        print(Cart.cartList);
-                        Cart.cartList.clear();
+                        Cart.ItemAddToCart(
+                            widget.drinkDataModel.name, qtdeItems);
                       },
                     ),
                   )),
