@@ -3,21 +3,37 @@
 class Cart {
   static var cartList = new Map();
 
-  static var item = new Map();
+  static var item = {};
   static int x = 0;
+  static bool inDict = false;
 
-  static void ItemAddToCart(String name, var qtdeItems) {
+  static void ItemAddToCart(String _name, var _qtdeItems) {
     item = {
-      'Name': name,
-      'Quantidade': qtdeItems,
+      'Name': _name,
+      'Quantidade': _qtdeItems,
     };
-    Cart.cartList[x] = item;
-    x++;
-    Cart.cartList.forEach((key, value) {
-      if (value["Name"] == name) {
-        value["Quantidade"] += qtdeItems;
+
+    // for (var i = 0; i < 15; i++) {
+    //   cartList.remove(i);
+    // }
+    if (cartList.isEmpty) {
+      cartList[x] = item;
+      x++;
+    } else {
+      cartList.forEach((key, value) {
+        if (value["Name"] == _name) {
+          value["Quantidade"] += _qtdeItems;
+          inDict = true;
+        }
+      });
+      if (!inDict) {
+        cartList[x] = item;
+        x++;
       }
-    });
+      inDict = false;
+    }
     print(cartList);
   }
+
+  static void DeleteCartItems() {}
 }
