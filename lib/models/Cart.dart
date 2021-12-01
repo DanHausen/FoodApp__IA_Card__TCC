@@ -13,10 +13,8 @@ class Cart {
       'Quantidade': _qtdeItems,
     };
 
-    // for (var i = 0; i < 15; i++) {
-    //   cartList.remove(i);
-    // }
     if (cartList.isEmpty) {
+      x = 0;
       cartList[x] = item;
       x++;
     } else {
@@ -35,5 +33,9 @@ class Cart {
     print(cartList);
   }
 
-  static void DeleteCartItems() {}
+  static void DeleteCartItems() {
+    for (var i = 0; i < cartList.length; i++) {
+      cartList.remove(i);
+    }
+  }
 }
