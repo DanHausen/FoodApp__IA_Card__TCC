@@ -1,0 +1,64 @@
+{
+    "Products":{
+        "Drink":{
+            "01":{
+                "id": "",
+                "name": "",
+                "filtros": "",
+                "value": "",
+                "desc": "",
+                "image": ""
+            }
+        },
+        "Portions":{
+            "01" :{
+                "id": "",
+                "name": "",
+                "filtros": "",
+                "value": "",
+                "desc": "",
+                "image": ""
+            }
+        },
+        "Lanches":{
+            "01" :{
+                "id": "",
+                "name": "",
+                "filtros": "",
+                "value": "",
+                "desc": "",
+                "image": ""
+            }
+        },
+        "A la carte":{
+            "01" :{
+                "id": "",
+                "name": "",
+                "filtros": "",
+                "value": "",
+                "desc": "",
+                "image": ""
+            }
+        },
+        "Saladas" :{
+            "01" :{
+                "id": "",
+                "name": "",
+                "filtros": "",
+                "value": "",
+                "desc": "",
+                "image": ""
+            }
+        },
+        "Sobremes" :{
+            "01" :{
+                "id": "",
+                "name": "",
+                "filtros": "",
+                "value": "",
+                "desc": "",
+                "image": ""
+            }
+        }
+}
+}
