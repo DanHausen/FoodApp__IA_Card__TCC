@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ia_card/models/Cart.dart';
+import 'package:ia_card/widgets/Cart.dart';
 import 'package:ia_card/models/portion.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ia_card/pages/cart_page.dart';
