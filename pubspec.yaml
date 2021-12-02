@@ -2,13 +2,7 @@ name: ia_card
 description: Projeto TCC
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-
-
-ndkVersion: '23.0.7599858'
-   
-
 version: 1.0.0+1
-
 environment:
   sdk: ">=2.11.0 <3.0.0"
 
@@ -36,14 +30,10 @@ flutter_icons:
   image_path: "assets/images/icon.png"
 
 flutter:
-
   uses-material-design: true
-
   assets:
       - assets/images/logo.png
       - assets/Icons/icon.png
       - "assets/images/categories/"
       - assets/images/
       - assets/Icons/
-
-  
