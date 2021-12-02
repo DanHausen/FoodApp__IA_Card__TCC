@@ -21,14 +21,14 @@ class _ProductPageClassState extends State<ProductPageClass> {
       //TODO os dados estão aparecendo. Preciso continuar por aqui e filtrar os dados para mostrar nas páginas.
       list.clear();
       data.forEach((key, value) {
-        //print(value);
+        print(value["01"]["id"]);
         Product product = new Product(
-          id: value["id"],
-          name: value["name"],
-          filtros: value["filtros"],
-          price: value["price"],
-          description: value["description"],
-          image: value["image"],
+          id: value["01"]["id"],
+          name: value["01"]["name"],
+          filtros: value["01"]["filtros"],
+          price: value["01"]["price"],
+          description: value["01"]["description"],
+          image: value["01"]["image"],
           key: key,
         );
         list.add(product);

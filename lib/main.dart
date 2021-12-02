@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           backGroundColor: Colors.orange,
           animationEffect: 'zoom-in',
           logoSize: 200,
-          home: ProductPageClass(),
+          home: CardPage(app: app),
           duration: 2500,
           type: CustomSplashType.StaticDuration,
         ));

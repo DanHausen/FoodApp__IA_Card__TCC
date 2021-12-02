@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class Product {
   final String name;
-  final int id;
+  final String id;
   final String filtros;
   final String description;
   final String image;

@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
+import 'package:ia_card/pages/Product_page.dart';
 import 'package:ia_card/pages/drink_page.dart';
 import 'package:ia_card/pages/portion_page.dart';
 import 'package:ia_card/pages/salad_page.dart';
@@ -136,7 +137,7 @@ class _CardPageState extends State<CardPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => DrinkPage()),
+                                builder: (context) => ProductPageClass()),
                           );
                         },
                       ),
