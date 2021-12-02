@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class Drink {
+class Product {
   final String name;
   final int id;
   final String filtros;
@@ -8,7 +8,7 @@ class Drink {
   final String image;
   final String value;
 
-  const Drink({
+  const Product({
     @required this.name,
     this.filtros,
     @required this.id,

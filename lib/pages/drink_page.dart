@@ -14,7 +14,6 @@ final drink = {...TESTE_DRINK};
 
 class _DrinkPageState extends State<DrinkPage> {
   SearchBar searchBar;
-
   AppBar buildAppBar(BuildContext context) {
     return new AppBar(
       toolbarHeight: 90,

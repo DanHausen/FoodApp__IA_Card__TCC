@@ -6,7 +6,7 @@ import 'package:ia_card/pages/drink_detail.dart';
 
 class DrinkTile extends StatelessWidget {
 
-  final Drink drink;
+  final Product drink;
 
   const DrinkTile(this.drink);
 

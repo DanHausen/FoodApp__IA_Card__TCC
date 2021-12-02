@@ -1,7 +1,10 @@
-//TODO Utilizar essa pagina como unica para construir os detalhes
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_search_bar/flutter_search_bar.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ia_card/models/Product.dart';
+import 'package:ia_card/pages/cart_page.dart';
+import 'package:ia_card/widgets/Product_tile.dart';
 
 class ProductPageClass extends StatefulWidget {
   @override
@@ -10,7 +13,7 @@ class ProductPageClass extends StatefulWidget {
 
 class _ProductPageClassState extends State<ProductPageClass> {
   final fb = FirebaseDatabase.instance.reference().child("Products");
-  List<Product> list = [];
+  static List<Product> productList = [];
 
   @override
   void initState() {
@@ -18,8 +21,7 @@ class _ProductPageClassState extends State<ProductPageClass> {
     fb.once().then((DataSnapshot snap) {
       var data = snap.value;
       print(data);
-      //TODO os dados estão aparecendo. Preciso continuar por aqui e filtrar os dados para mostrar nas páginas.
-      list.clear();
+      productList.clear();
       data.forEach((key, value) {
         print(value["01"]["id"]);
         Product product = new Product(
@@ -31,14 +33,54 @@ class _ProductPageClassState extends State<ProductPageClass> {
           image: value["01"]["image"],
           key: key,
         );
-        list.add(product);
+        productList.add(product);
       });
       setState(() {});
     });
   }
 
+  SearchBar searchBar;
+  AppBar buildAppBar(BuildContext context) {
+    return new AppBar(
+      toolbarHeight: 90,
+      centerTitle: true,
+      actions: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(right: 30.0),
+          child: IconButton(
+            icon: Icon(Icons.shopping_basket, size: 35),
+            color: Colors.white,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CartPage()),
+              );
+            },
+          ),
+        )
+      ],
+      title: new Text('Bebidas',
+          style: GoogleFonts.passionOne(
+              fontStyle: FontStyle.normal, fontSize: 40)),
+      backgroundColor: Color.fromRGBO(255, 161, 73, 1),
+    );
+  }
+
+  _ProductPageClassState() {
+    searchBar = new SearchBar(
+        inBar: false,
+        setState: setState,
+        onSubmitted: print,
+        buildDefaultAppBar: buildAppBar);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return new Scaffold(
+        appBar: searchBar.build(context),
+        body: ListView.builder(
+          itemCount: productList.length,
+          itemBuilder: (ctx, i) => ProductTile(productList.elementAt(i)),
+        ));
   }
 }

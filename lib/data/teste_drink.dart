@@ -3,7 +3,7 @@ import 'dart:convert';
 
 
 const TESTE_DRINK = {
-  '1': const Drink(
+  '1': const Product(
     id: 1,
     name: 'Coca',
     filtros: "Diet",
@@ -12,7 +12,7 @@ const TESTE_DRINK = {
     image:
         'https://d3pt1seq4txask.cloudfront.net/Custom/Content/Products/01/01/0101_refrigerante-coca-cola-lata-350ml-14_m6_637417305699974110.jpg',
   ),
-  '2': const Drink(
+  '2': const Product(
     id: 2,
     name: 'Guaraná',
     value: '5.00',
@@ -21,7 +21,7 @@ const TESTE_DRINK = {
     image:
         'https://formulachopp.cdn.3techstore.com.br/img/p/1/1/6/8/6/11686-thickbox_default.jpg',
   ),
-  '3': const Drink(
+  '3': const Product(
     id: 4,
     name: 'Suco de Uva',
     value: '8.00',

@@ -7,7 +7,7 @@ import 'package:ia_card/pages/cart_page.dart';
 int qtdeItems = 1;
 
 class DrinkDetail extends StatelessWidget {
-  final Drink drinkDataModel;
+  final Product drinkDataModel;
   // ignore: non_constant_identifier_names
   const DrinkDetail({Key key, @required this.drinkDataModel}) : super(key: key);
 
@@ -45,7 +45,7 @@ class ProductPage extends StatefulWidget {
     @required this.drinkDataModel,
   }) : super(key: key);
 
-  final Drink drinkDataModel;
+  final Product drinkDataModel;
 
   @override
   State<ProductPage> createState() => _ProductPageState();
