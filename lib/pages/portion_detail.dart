@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:ia_card/models/Cart.dart';
 import 'package:ia_card/models/portion.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ia_card/pages/cart_page.dart';
+
+int qtdeItems = 1;
 
 class PortionDetail extends StatelessWidget {
   final Portion portionDataModel;
@@ -21,7 +25,12 @@ class PortionDetail extends StatelessWidget {
             child: IconButton(
               icon: Icon(Icons.shopping_basket, size: 35),
               color: Colors.white,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CartPage()),
+                );
+              },
             ),
           )
         ],
@@ -31,7 +40,7 @@ class PortionDetail extends StatelessWidget {
   }
 }
 
-class ProductPage extends StatelessWidget {
+class ProductPage extends StatefulWidget {
   const ProductPage({
     Key key,
     @required this.portionDataModel,
@@ -39,6 +48,11 @@ class ProductPage extends StatelessWidget {
 
   final Portion portionDataModel;
 
+  @override
+  State<ProductPage> createState() => _ProductPageState();
+}
+
+class _ProductPageState extends State<ProductPage> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -48,7 +62,7 @@ class ProductPage extends StatelessWidget {
             decoration: new BoxDecoration(color: Colors.white),
             padding: const EdgeInsets.all(40.0),
             alignment: Alignment.topCenter,
-            child: Image.network(portionDataModel.image),
+            child: Image.network(widget.portionDataModel.image),
           ),
           Row(
             children: [
@@ -61,7 +75,7 @@ class ProductPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: new Text(
-                      portionDataModel.name,
+                      widget.portionDataModel.name,
                       style: GoogleFonts.metrophobic(
                           fontWeight: FontWeight.w300,
                           fontSize: 25,
@@ -79,7 +93,7 @@ class ProductPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: Text(
-                      'R\$ ' + portionDataModel.value,
+                      'R\$ ' + widget.portionDataModel.value,
                       style: GoogleFonts.metrophobic(
                         fontWeight: FontWeight.w900,
                         fontSize: 25,
@@ -108,7 +122,7 @@ class ProductPage extends StatelessWidget {
             padding: const EdgeInsets.only(left: 40, top: 10),
             alignment: Alignment.topLeft,
             child: Text(
-              portionDataModel.desc,
+              widget.portionDataModel.desc,
               style: GoogleFonts.metrophobic(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
@@ -121,7 +135,7 @@ class ProductPage extends StatelessWidget {
             padding: const EdgeInsets.only(left: 40, bottom: 10),
             alignment: Alignment.topLeft,
             child: Text(
-              "Filtros: " + portionDataModel.filtros,
+              "Filtros: " + widget.portionDataModel.filtros,
               style: GoogleFonts.metrophobic(
                 fontWeight: FontWeight.normal,
                 fontSize: 13,
@@ -159,7 +173,13 @@ class ProductPage extends StatelessWidget {
                   child: Row(
                     children: [
                       InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            if (qtdeItems > 1) {
+                              setState(() {
+                                qtdeItems--;
+                              });
+                            }
+                          },
                           child: Icon(
                             Icons.remove,
                             color: Colors.black54,
@@ -171,7 +191,7 @@ class ProductPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8),
                             color: Colors.black12),
                         child: Text(
-                          ' 1 ',
+                          qtdeItems.toString(),
                           style: GoogleFonts.roboto(
                               color: Colors.black,
                               fontSize: 20,
@@ -179,7 +199,9 @@ class ProductPage extends StatelessWidget {
                         ),
                       ),
                       InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            qtdeItems++;
+                          },
                           child: Icon(
                             Icons.add,
                             color: Colors.black54,
@@ -202,7 +224,12 @@ class ProductPage extends StatelessWidget {
                         style: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.w900),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Cart.ItemAddToCart(
+                            widget.portionDataModel.name,
+                            qtdeItems,
+                            double.parse(widget.portionDataModel.value));
+                      },
                     ),
                   )),
                 ),

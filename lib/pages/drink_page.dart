@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
 import 'package:ia_card/data/teste_drink.dart';
+import 'package:ia_card/pages/cart_page.dart';
 import 'package:ia_card/widgets/drink_tile.dart';
 
 class DrinkPage extends StatefulWidget {
@@ -24,7 +25,12 @@ class _DrinkPageState extends State<DrinkPage> {
           child: IconButton(
             icon: Icon(Icons.shopping_basket, size: 35),
             color: Colors.white,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CartPage()),
+              );
+            },
           ),
         )
       ],

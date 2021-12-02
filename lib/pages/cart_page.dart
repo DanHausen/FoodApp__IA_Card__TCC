@@ -44,40 +44,50 @@ class _CartPageState extends State<CartPage> {
   Widget buildCartCard(BuildContext context, int index) {
     final cart = cartList[index];
     return new Container(
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: <Widget>[
-              Row(
-                children: [
-                  Text(cart["Name"],
-                      style: new TextStyle(
-                          fontSize: 25, fontWeight: FontWeight.bold)),
-                  Spacer(),
-                  TextButton(
-                      child: Icon(Icons.delete),
-                      onPressed: () {
-                        setState(() {
-                          Cart.DeleteSelectedCartItem(index);
-                          cartLength = Cart.cartList.length;
-                          cartAmount = Cart.cartAmount;
-                        });
-                      }),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Row(children: [
-                  Text("Quantidade: " + cart["Quantidade"].toString(),
-                      style: new TextStyle(fontSize: 25)),
-                  Spacer(),
-                  Text('R\$ ' + cart["Price"].toString(),
-                      style: new TextStyle(
-                          fontSize: 25, fontWeight: FontWeight.bold)),
-                ]),
-              )
-            ],
+      decoration: BoxDecoration(
+        border: Border(left: BorderSide(color: Colors.orange, width: 3)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 2.0),
+        child: Card(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(cart["Name"],
+                          style: new TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ),
+                    Spacer(),
+                    TextButton(
+                        child: Icon(Icons.delete),
+                        onPressed: () {
+                          setState(() {
+                            Cart.DeleteSelectedCartItem(index);
+                            cartLength = Cart.cartList.length;
+                            cartAmount = Cart.cartAmount;
+                          });
+                        }),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Row(children: [
+                    Text("Quantidade: " + cart["Quantidade"].toString(),
+                        style: new TextStyle(fontSize: 25)),
+                    Spacer(),
+                    Text('R\$ ' + cart["Price"].toString(),
+                        style: new TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold)),
+                  ]),
+                )
+              ],
+            ),
           ),
         ),
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ia_card/models/drink.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ia_card/models/Cart.dart';
+import 'package:ia_card/pages/cart_page.dart';
 
 int qtdeItems = 1;
 
@@ -23,7 +24,12 @@ class DrinkDetail extends StatelessWidget {
             child: IconButton(
               icon: Icon(Icons.shopping_basket, size: 35),
               color: Colors.white,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CartPage()),
+                );
+              },
             ),
           )
         ],
