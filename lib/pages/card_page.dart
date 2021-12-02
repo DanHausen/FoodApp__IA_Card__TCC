@@ -12,8 +12,6 @@ import 'dessert_page.dart';
 import 'la_carte_page.dart';
 
 class CardPage extends StatefulWidget {
-  CardPage({this.app});
-  final FirebaseApp app;
   @override
   _CardPageState createState() => _CardPageState();
 }
@@ -137,7 +135,8 @@ class _CardPageState extends State<CardPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ProductPageClass()),
+                                builder: (context) =>
+                                    ProductPageClass(name: "Drink")),
                           );
                         },
                       ),

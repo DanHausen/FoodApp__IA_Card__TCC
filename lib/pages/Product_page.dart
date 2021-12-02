@@ -7,6 +7,8 @@ import 'package:ia_card/pages/cart_page.dart';
 import 'package:ia_card/widgets/Product_tile.dart';
 
 class ProductPageClass extends StatefulWidget {
+  ProductPageClass({this.name});
+  final String name;
   @override
   _ProductPageClassState createState() => _ProductPageClassState();
 }
@@ -51,6 +53,7 @@ class _ProductPageClassState extends State<ProductPageClass> {
             icon: Icon(Icons.shopping_basket, size: 35),
             color: Colors.white,
             onPressed: () {
+              print(productList[01]);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => CartPage()),
