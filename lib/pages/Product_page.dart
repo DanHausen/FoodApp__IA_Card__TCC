@@ -18,6 +18,7 @@ class _ProductPageClassState extends State<ProductPageClass> {
     fb.once().then((DataSnapshot snap) {
       var data = snap.value;
       print(data);
+      //TODO os dados estão aparecendo. Preciso continuar por aqui e filtrar os dados para mostrar nas páginas.
       list.clear();
       data.forEach((key, value) {
         //print(value);
