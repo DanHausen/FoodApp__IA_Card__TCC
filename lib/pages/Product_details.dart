@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ia_card/models/drink.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ia_card/models/Product.dart';
 import 'package:ia_card/widgets/Cart.dart';
 import 'package:ia_card/pages/cart_page.dart';
 
@@ -95,7 +95,7 @@ class _ProductPageState extends State<ProductPage> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: Text(
-                      'R\$ ' + widget.productModel.value,
+                      'R\$ ' + widget.productModel.price,
                       style: GoogleFonts.metrophobic(
                         fontWeight: FontWeight.w900,
                         fontSize: 25,
@@ -124,7 +124,7 @@ class _ProductPageState extends State<ProductPage> {
             padding: const EdgeInsets.only(left: 40, top: 10),
             alignment: Alignment.topLeft,
             child: Text(
-              widget.productModel.desc,
+              widget.productModel.description,
               style: GoogleFonts.metrophobic(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
@@ -231,7 +231,7 @@ class _ProductPageState extends State<ProductPage> {
                       ),
                       onPressed: () {
                         Cart.ItemAddToCart(widget.productModel.name, qtdeItems,
-                            double.parse(widget.productModel.value));
+                            double.parse(widget.productModel.price));
                       },
                     ),
                   )),

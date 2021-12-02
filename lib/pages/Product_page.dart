@@ -7,25 +7,24 @@ import 'package:ia_card/pages/cart_page.dart';
 import 'package:ia_card/widgets/Product_tile.dart';
 
 class ProductPageClass extends StatefulWidget {
-  ProductPageClass({this.name});
+  ProductPageClass({this.name}); //TODO deixar o código melhor
   final String name;
+
   @override
   _ProductPageClassState createState() => _ProductPageClassState();
 }
 
 class _ProductPageClassState extends State<ProductPageClass> {
   final fb = FirebaseDatabase.instance.reference().child("Products");
-  static List<Product> productList = [];
+  final List<Product> list = [];
+  static var productList = {};
 
   @override
   void initState() {
     super.initState();
     fb.once().then((DataSnapshot snap) {
       var data = snap.value;
-      print(data);
-      productList.clear();
       data.forEach((key, value) {
-        print(value["01"]["id"]);
         Product product = new Product(
           id: value["01"]["id"],
           name: value["01"]["name"],
@@ -35,7 +34,18 @@ class _ProductPageClassState extends State<ProductPageClass> {
           image: value["01"]["image"],
           key: key,
         );
-        productList.add(product);
+        productList[key] = [
+          [
+            product.id,
+            product.name,
+            product.filtros,
+            product.price,
+            product.description,
+            product.image,
+            product.key
+          ]
+        ];
+        list.add(product);
       });
       setState(() {});
     });
@@ -53,7 +63,7 @@ class _ProductPageClassState extends State<ProductPageClass> {
             icon: Icon(Icons.shopping_basket, size: 35),
             color: Colors.white,
             onPressed: () {
-              print(productList[01]);
+              print(list[1].image);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => CartPage()),
@@ -80,10 +90,11 @@ class _ProductPageClassState extends State<ProductPageClass> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: searchBar.build(context),
-        body: ListView.builder(
-          itemCount: productList.length,
-          itemBuilder: (ctx, i) => ProductTile(productList.elementAt(i)),
-        ));
+      appBar: searchBar.build(context),
+      body: ListView.builder(
+        itemCount: productList["Drink"].length,
+        itemBuilder: (ctx, i) => ProductTile(list[i]),
+      ),
+    );
   }
 }

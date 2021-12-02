@@ -1,4 +1,3 @@
-//TODO Utilizar essa pagina como unica para construir os detalhes
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ia_card/models/Product.dart';
@@ -32,10 +31,13 @@ class ProductTile extends StatelessWidget {
             GoogleFonts.metrophobic(fontStyle: FontStyle.normal, fontSize: 18),
       ),
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
+        Navigator.of(context).push(
+          MaterialPageRoute(
             builder: (context) => ProductDetails(
-                  productModel: index,
-                )));
+              productModel: index,
+            ),
+          ),
+        );
       },
     );
   }

@@ -1,8 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:custom_splash/custom_splash.dart';
-import 'package:ia_card/pages/Product_page.dart';
-import 'package:ia_card/pages/drink_detail.dart';
 import 'constants.dart';
 import 'models/Product.dart';
 import 'pages/card_page.dart';

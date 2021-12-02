@@ -1,15 +1,8 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
 import 'package:ia_card/pages/Product_page.dart';
-import 'package:ia_card/pages/drink_page.dart';
-import 'package:ia_card/pages/portion_page.dart';
-import 'package:ia_card/pages/salad_page.dart';
-import 'package:ia_card/pages/sandwich_page.dart';
 import 'package:ia_card/pages/cart_page.dart';
-import 'dessert_page.dart';
-import 'la_carte_page.dart';
 
 class CardPage extends StatefulWidget {
   @override
@@ -124,7 +117,7 @@ class _CardPageState extends State<CardPage> {
                           ),
                         ),
                         child: Text(
-                          'Bebidas',
+                          'Drink',
                           style: GoogleFonts.metrophobic(
                             color: Colors.grey[700],
                             fontStyle: FontStyle.normal,
@@ -184,7 +177,8 @@ class _CardPageState extends State<CardPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => PortionPage()),
+                                builder: (context) =>
+                                    ProductPageClass(name: "Portions")),
                           );
                         },
                       ),
@@ -232,7 +226,8 @@ class _CardPageState extends State<CardPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SandwichPage()),
+                                builder: (context) =>
+                                    ProductPageClass(name: "Lanches")),
                           );
                         },
                       ),
@@ -280,7 +275,8 @@ class _CardPageState extends State<CardPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ALaCartePage()),
+                                builder: (context) =>
+                                    ProductPageClass(name: "A la carte")),
                           );
                         },
                       ),
@@ -329,7 +325,8 @@ class _CardPageState extends State<CardPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SaladPage()),
+                                builder: (context) =>
+                                    ProductPageClass(name: "Saladas")),
                           );
                         },
                       ),
@@ -380,7 +377,8 @@ class _CardPageState extends State<CardPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => DessertPage()),
+                                builder: (context) =>
+                                    ProductPageClass(name: "Sobremesas")),
                           );
                         },
                       ),
