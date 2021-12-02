@@ -61,6 +61,7 @@ class _CartPageState extends State<CartPage> {
                         setState(() {
                           Cart.DeleteSelectedCartItem(index);
                           cartLength = Cart.cartList.length;
+                          cartAmount = Cart.cartAmount;
                         });
                       }),
                 ],

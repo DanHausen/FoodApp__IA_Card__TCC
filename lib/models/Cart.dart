@@ -47,6 +47,7 @@ class Cart {
   }
 
   static void DeleteSelectedCartItem(var _key) {
+    cartAmount -= cartList[_key]["Quantidade"];
     cartList.remove(_key);
   }
 }
