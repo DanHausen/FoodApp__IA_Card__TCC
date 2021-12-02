@@ -17,9 +17,10 @@ class _ProductPageClassState extends State<ProductPageClass> {
     super.initState();
     fb.once().then((DataSnapshot snap) {
       var data = snap.value;
+      print(data);
       list.clear();
       data.forEach((key, value) {
-        print(value["name"]);
+        //print(value);
         Product product = new Product(
           id: value["id"],
           name: value["name"],
