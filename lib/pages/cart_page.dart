@@ -49,7 +49,6 @@ class _CartPageState extends State<CartPage> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: <Widget>[
-              //Text(index.toString()),
               Row(
                 children: [
                   Text(cart["Name"],
@@ -58,8 +57,12 @@ class _CartPageState extends State<CartPage> {
                   Spacer(),
                   TextButton(
                       child: Icon(Icons.delete),
-                      onPressed: () =>
-                          setState(() => Cart.DeleteSelectedCartItem(index))),
+                      onPressed: () {
+                        setState(() {
+                          Cart.DeleteSelectedCartItem(index);
+                          cartLength = Cart.cartList.length;
+                        });
+                      }),
                 ],
               ),
               Padding(
