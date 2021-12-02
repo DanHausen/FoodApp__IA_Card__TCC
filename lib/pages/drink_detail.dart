@@ -224,7 +224,9 @@ class _ProductPageState extends State<ProductPage> {
                       ),
                       onPressed: () {
                         Cart.ItemAddToCart(
-                            widget.drinkDataModel.name, qtdeItems);
+                            widget.drinkDataModel.name,
+                            qtdeItems,
+                            double.parse(widget.drinkDataModel.value));
                       },
                     ),
                   )),

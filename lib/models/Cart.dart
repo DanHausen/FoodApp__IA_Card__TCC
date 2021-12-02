@@ -5,32 +5,39 @@ class Cart {
 
   static var item = {};
   static int x = 0;
-  static bool inDict = false;
+  static int cartAmount = 0;
+  static bool insideDict = false;
 
-  static void ItemAddToCart(String _name, var _qtdeItems) {
+  static void ItemAddToCart(String _name, var _qtdeItems, var _productPrice) {
     item = {
       'Name': _name,
       'Quantidade': _qtdeItems,
+      'Price': _productPrice,
     };
 
     if (cartList.isEmpty) {
       x = 0;
+      cartAmount = 0;
       cartList[x] = item;
+      cartAmount += _qtdeItems;
       x++;
     } else {
       cartList.forEach((key, value) {
         if (value["Name"] == _name) {
           value["Quantidade"] += _qtdeItems;
-          inDict = true;
+          value["Price"] += _productPrice;
+          insideDict = true;
         }
       });
-      if (!inDict) {
+      if (!insideDict) {
         cartList[x] = item;
         x++;
       }
-      inDict = false;
+      insideDict = false;
+      cartAmount += _qtdeItems;
     }
-    print(cartList);
+    // print(cartList);
+    // print(cartList[1]["Name"]);
   }
 
   static void DeleteCartItems() {
@@ -38,4 +45,16 @@ class Cart {
       cartList.remove(i);
     }
   }
+
+  static void DeleteSelectedCartItem(var _key) {
+    cartList.remove(_key);
+  }
 }
+
+// class CartCard {
+//   final String titleName;
+//   final int productAmount;
+//   final double productPrice;
+
+//   CartCard(this.titleName, this.productAmount, this.productPrice);
+// }
