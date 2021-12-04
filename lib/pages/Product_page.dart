@@ -95,6 +95,7 @@ class _ProductPageClassState extends State<ProductPageClass> {
     return new Scaffold(
       appBar: searchBar.build(context),
       body: ListView.builder(
+          //TODO Adicionar o future para parar deaparecer a tela vermelha
           itemCount: productList[widget.name].length,
           itemBuilder: (ctx, i) {
             return ProductTile(list[CheckNameProduct()]);

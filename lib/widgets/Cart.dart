@@ -1,5 +1,3 @@
-//TODO Estou fazendo o map do carrinho funcionar
-
 class Cart {
   static var cartList = new Map();
 
