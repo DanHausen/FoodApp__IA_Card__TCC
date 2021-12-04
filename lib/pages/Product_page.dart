@@ -97,9 +97,14 @@ class _ProductPageClassState extends State<ProductPageClass> {
       body: ListView.builder(
           itemCount: productList[widget.name].length,
           itemBuilder: (ctx, i) {
-            //TODO Código index em falha
-            return ProductTile(list[1]);
+            return ProductTile(list[CheckNameProduct()]);
           }),
     );
+  }
+
+  int CheckNameProduct() {
+    for (var i = 0; i < productList.length; i++) {
+      if (widget.name == list[i].key) return i;
+    }
   }
 }
