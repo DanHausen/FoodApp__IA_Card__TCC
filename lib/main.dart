@@ -31,7 +31,8 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: CustomSplash(
-          imagePath: 'assets/images/logo.png',
+          imagePath:
+              'assets/images/logo.png', //TODO precisamos fazer o migration da splash - flutter.dev/go/android-splash-migration
           backGroundColor: Colors.orange,
           animationEffect: 'zoom-in',
           logoSize: 200,

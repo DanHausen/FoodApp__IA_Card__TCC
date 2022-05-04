@@ -15,7 +15,7 @@ class ProductPageClass extends StatefulWidget {
 }
 
 class _ProductPageClassState extends State<ProductPageClass> {
-  final fb = FirebaseDatabase.instance.reference().child("Products");
+  final fb = FirebaseDatabase.instance.ref().child("Products");
   final List<Product> list = [];
   static var productList = {};
   int n = 01;
@@ -23,10 +23,10 @@ class _ProductPageClassState extends State<ProductPageClass> {
   @override
   void initState() {
     super.initState();
-    fb.once().then((DataSnapshot snap) {
-      var data = snap.value;
+    fb.once().then((DatabaseEvent snapEvent) {
+      var value = snapEvent.snapshot.value;
       list.clear();
-      data.forEach(
+      (value as dynamic).forEach(
         (key, value) {
           Product product = new Product(
             id: value[n.toString().padLeft(n + 1, '0')]["id"],
@@ -107,5 +107,6 @@ class _ProductPageClassState extends State<ProductPageClass> {
     for (var i = 0; i < productList.length; i++) {
       if (widget.name == list[i].key) return i;
     }
+    return null;
   }
 }
