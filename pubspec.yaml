@@ -1,0 +1,39 @@
+name: ia_card
+description: Projeto TCC
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+environment:
+  sdk: ">=2.11.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cloud_firestore: any
+  firebase_core: any
+  firebase_analytics: any
+  firebase_database: any
+  cupertino_icons: ^1.0.2
+  custom_splash: ^0.0.2
+  flutter_search_bar: ^2.1.0
+  flutter_launcher_icons: any
+  flutter_svg: any
+
+  flutter_test:
+    sdk: flutter
+  google_fonts: ^2.1.0
+  fancy_shimmer_image: ^2.0.0+2
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/icon.png"
+
+flutter:
+  uses-material-design: true
+  assets:
+      - assets/images/logo.png
+      - assets/Icons/icon.png
+      - "assets/images/categories/"
+      - assets/images/
+      - assets/Icons/
