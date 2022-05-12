@@ -4,15 +4,14 @@ description: Projeto TCC
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 environment:
-  sdk: ">=2.11.0 <3.0.0"
+  sdk: ">=2.11.0 <=4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   cloud_firestore: any
-  firebase_core: any
-  firebase_analytics: any
-  firebase_database: any
+  firebase_core: ^1.16.0
+  firebase_database: ^9.0.13
   cupertino_icons: ^1.0.2
   custom_splash: ^0.0.2
   flutter_search_bar: ^2.1.0
