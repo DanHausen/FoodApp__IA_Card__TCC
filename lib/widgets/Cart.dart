@@ -6,7 +6,7 @@ class Cart {
   static int cartAmount = 0;
   static bool insideDict = false;
 
-  static void ItemAddToCart(String _name, var _qtdeItems, var _productPrice) {
+  static void itemAddToCart(String _name, var _qtdeItems, var _productPrice) {
     item = {
       'Name': _name,
       'Quantidade': _qtdeItems,
@@ -38,13 +38,13 @@ class Cart {
     // print(cartList[1]["Name"]);
   }
 
-  static void DeleteCartItems() {
+  static void deleteCartItems() {
     for (var i = 0; i < cartList.length; i++) {
       cartList.remove(i);
     }
   }
 
-  static void DeleteSelectedCartItem(var _key) {
+  static void deleteSelectedCartItem(var _key) {
     cartAmount -= cartList[_key]["Quantidade"];
     cartList.remove(_key);
   }

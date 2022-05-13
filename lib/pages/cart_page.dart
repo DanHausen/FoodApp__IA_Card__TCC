@@ -68,7 +68,7 @@ class _CartPageState extends State<CartPage> {
                         child: Icon(Icons.delete),
                         onPressed: () {
                           setState(() {
-                            Cart.DeleteSelectedCartItem(index);
+                            Cart.deleteSelectedCartItem(index);
                             cartLength = Cart.cartList.length;
                             cartAmount = Cart.cartAmount;
                           });

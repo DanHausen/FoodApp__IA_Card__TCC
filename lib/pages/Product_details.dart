@@ -230,7 +230,7 @@ class _ProductPageState extends State<ProductPage> {
                             color: Colors.white, fontWeight: FontWeight.w900),
                       ),
                       onPressed: () {
-                        Cart.ItemAddToCart(widget.productModel.name, qtdeItems,
+                        Cart.itemAddToCart(widget.productModel.name, qtdeItems,
                             double.parse(widget.productModel.price));
                       },
                     ),
