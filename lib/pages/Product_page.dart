@@ -92,14 +92,27 @@ class _ProductPageClassState extends State<ProductPageClass> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: searchBar.build(context),
-      body: ListView.builder(
-          itemCount: productList[widget.name].length,
-          itemBuilder: (ctx, i) {
-            return ProductTile(list[checkNameProduct()]);
-          }),
-    );
+    return FutureBuilder(
+        future: fb.get(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            print('Temos um erro! ${snapshot.error.toString()}');
+            return Text('Algo deu errado');
+          } else if (snapshot.hasData) {
+            return new Scaffold(
+              appBar: searchBar.build(context),
+              body: ListView.builder(
+                  itemCount: productList[widget.name].length,
+                  itemBuilder: (ctx, i) {
+                    return ProductTile(list[checkNameProduct()]);
+                  }),
+            );
+          } else {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        });
   }
 
   int checkNameProduct() {

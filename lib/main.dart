@@ -7,13 +7,11 @@ import 'pages/card_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  FirebaseApp app = await Firebase.initializeApp();
-  runApp(MyApp(app: app));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final FirebaseApp app;
-  MyApp({this.app});
+  final Future<FirebaseApp> app = Firebase.initializeApp();
 
   static List<Product> cartList;
 
@@ -31,8 +29,7 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: CustomSplash(
-          imagePath:
-              'assets/images/logo.png', //TODO precisamos fazer o migration da splash - flutter.dev/go/android-splash-migration
+          imagePath: 'assets/images/logo.png',
           backGroundColor: Colors.orange,
           animationEffect: 'zoom-in',
           logoSize: 200,
