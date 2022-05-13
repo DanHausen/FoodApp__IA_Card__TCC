@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1059153884506",
+    "firebase_url": "https://foodapp-card-default-rtdb.firebaseio.com",
     "project_id": "foodapp-card",
     "storage_bucket": "foodapp-card.appspot.com"
   },
