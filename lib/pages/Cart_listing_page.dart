@@ -18,7 +18,6 @@ class _CartListingPageState extends State<CartListingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(255, 161, 73, 1),
         toolbarHeight: 100,
         centerTitle: true,
         title: Column(
@@ -31,12 +30,43 @@ class _CartListingPageState extends State<CartListingPage> {
             Text("$cartAmount items")
           ],
         ),
+        backgroundColor: Color.fromRGBO(255, 161, 73, 1),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(25),
+          ),
+        ),
       ),
-      body: Container(
-        child: new ListView.builder(
-            itemCount: cartLength,
-            itemBuilder: (BuildContext context, int index) =>
-                buildCartCard(context, index)),
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              child: new ListView.builder(
+                  itemCount: cartLength,
+                  itemBuilder: (BuildContext context, int index) =>
+                      buildCartCard(context, index)),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Color.fromRGBO(255, 161, 73, 1),
+                elevation: 0.0,
+              ),
+              onPressed: () {},
+              child: Text(
+                "Finalizar compra",
+                style: GoogleFonts.passionOne(
+                  color: Colors.white,
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 24.0,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -45,7 +75,12 @@ class _CartListingPageState extends State<CartListingPage> {
     final cart = cartList[index];
     return new Container(
       decoration: BoxDecoration(
-        border: Border(left: BorderSide(color: Colors.orange, width: 3)),
+        border: Border(
+          left: BorderSide(
+            color: Color.fromRGBO(255, 161, 73, 1),
+            width: 4,
+          ),
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 2.0),
@@ -57,15 +92,21 @@ class _CartListingPageState extends State<CartListingPage> {
                 Row(
                   children: [
                     Expanded(
-                      child: Text(cart["Name"],
-                          style: new TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                          )),
+                      child: Text(
+                        cart["Name"],
+                        style: new TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                     Spacer(),
                     TextButton(
-                        child: Icon(Icons.delete),
+                        child: Icon(
+                          Icons.delete,
+                          size: 25,
+                          color: Color.fromRGBO(255, 161, 73, 1),
+                        ),
                         onPressed: () {
                           setState(() {
                             Cart.deleteSelectedCartItem(index);
@@ -79,13 +120,13 @@ class _CartListingPageState extends State<CartListingPage> {
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Row(children: [
                     Text("Quantidade: " + cart["Quantidade"].toString(),
-                        style: new TextStyle(fontSize: 25)),
+                        style: new TextStyle(fontSize: 16)),
                     Spacer(),
                     Text('R\$ ' + cart["Price"].toString(),
                         style: new TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold)),
+                            fontSize: 20, fontWeight: FontWeight.bold)),
                   ]),
-                )
+                ),
               ],
             ),
           ),

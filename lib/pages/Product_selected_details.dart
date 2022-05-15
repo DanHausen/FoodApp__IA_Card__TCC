@@ -167,47 +167,63 @@ class _ProductPageState extends State<ProductPage> {
                   labelText: 'obs: ',
                 ),
               )),
-          SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.only(bottom: 20.0),
+            padding: const EdgeInsets.symmetric(vertical: 30.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                   ),
                   child: Row(
                     children: [
-                      InkWell(
-                          onTap: () {
-                            //Adicionei o setState para atualizar o valor
-                            if (qtdeItems > 1) {
-                              setState(() {
-                                qtdeItems--;
-                              });
-                            }
-                          },
-                          child: Icon(
-                            Icons.remove,
-                            color: Colors.black54,
-                            size: 20,
-                          )),
+                      Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            color: Colors.grey[100]),
+                        child: InkWell(
+                            onTap: () {
+                              //Adicionei o setState para atualizar o valor
+                              if (qtdeItems > 1) {
+                                setState(() {
+                                  qtdeItems--;
+                                });
+                              }
+                            },
+                            child: Icon(
+                              Icons.remove,
+                              color: Colors.grey[900],
+                              size: 25,
+                            )),
+                      ),
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 10),
+                        width: 50,
+                        height: 50,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: Colors.black12),
-                        child: Text(
-                          qtdeItems.toString(),
-                          style: GoogleFonts.roboto(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                            borderRadius: BorderRadius.circular(4),
+                            color: Color.fromRGBO(255, 161, 73, 1)),
+                        child: Align(
+                          child: Text(
+                            qtdeItems.toString(),
+                            style: GoogleFonts.roboto(
+                                color: Colors.white,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
-                      InkWell(
+                      Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            color: Colors.grey[100]),
+                        child: InkWell(
                           onTap: () {
                             setState(() {
                               qtdeItems++;
@@ -215,17 +231,19 @@ class _ProductPageState extends State<ProductPage> {
                           },
                           child: Icon(
                             Icons.add,
-                            color: Colors.black54,
-                            size: 20,
-                          )),
+                            color: Colors.grey[900],
+                            size: 25,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(right: 40),
+                  padding: EdgeInsets.only(right: 20),
                   child: (SizedBox(
                     height: 50,
-                    width: 100,
+                    width: 125,
                     child: TextButton(
                       style: TextButton.styleFrom(
                         backgroundColor: Color.fromRGBO(255, 161, 73, 1),
@@ -233,7 +251,9 @@ class _ProductPageState extends State<ProductPage> {
                       child: Text(
                         'ADICIONAR',
                         style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w900),
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w900),
                       ),
                       onPressed: () {
                         Cart.itemAddToCart(widget.productModel.name, qtdeItems,
