@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ia_card/widgets/Cart.dart';
 
-class CartPage extends StatefulWidget {
+class CartListingPage extends StatefulWidget {
   static String routeName = "/cart";
 
   @override
-  State<CartPage> createState() => _CartPageState();
+  State<CartListingPage> createState() => _CartListingPageState();
 }
 
-class _CartPageState extends State<CartPage> {
+class _CartListingPageState extends State<CartListingPage> {
   var cartAmount = Cart.cartAmount;
   var cartLength = Cart.cartList.length;
   var cartList = Cart.cartList;

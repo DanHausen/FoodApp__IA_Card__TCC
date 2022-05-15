@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
-import 'package:ia_card/pages/Product_page.dart';
-import 'package:ia_card/pages/cart_page.dart';
+import 'package:ia_card/pages/Category_listing_page.dart';
+import 'package:ia_card/pages/Cart_listing_page.dart';
 
-class CardPage extends StatefulWidget {
+import '../main.dart';
+
+class MainCardsPage extends StatefulWidget {
   @override
-  _CardPageState createState() => _CardPageState();
+  _MainCardsPageState createState() => _MainCardsPageState();
 }
 
-class _CardPageState extends State<CardPage> {
+class _MainCardsPageState extends State<MainCardsPage> {
   SearchBar searchBar;
   final searchController = TextEditingController();
 
@@ -24,7 +26,7 @@ class _CardPageState extends State<CardPage> {
   AppBar buildAppBar(BuildContext context) {
     return new AppBar(
       toolbarHeight: 70,
-      elevation: 0.0,
+      elevation: 1,
       centerTitle: true,
       title: new Text(
         'Restaurante',
@@ -40,7 +42,7 @@ class _CardPageState extends State<CardPage> {
     );
   }
 
-  _CardPageState() {
+  _MainCardsPageState() {
     searchBar = new SearchBar(
         inBar: false,
         setState: setState,
@@ -60,11 +62,11 @@ class _CardPageState extends State<CardPage> {
   _buildBody() {
     return Column(
       children: [
-        _buildVerticalSpace(height: 26),
+        _buildVerticalSpace(),
         _buildToolBar(),
-        _buildVerticalSpace(height: 26),
+        _buildVerticalSpace(),
         _categoryBuilder(),
-        _buildVerticalSpace(height: 26),
+        _buildVerticalSpace(),
         _buildCategoryOptions(),
         _buildVerticalSpace(height: 54),
         _buildHistoryButton(),
@@ -88,11 +90,11 @@ class _CardPageState extends State<CardPage> {
           padding: EdgeInsets.all(10),
           child: Text(
             'Categorias',
-            style: GoogleFonts.metrophobic(
+            style: GoogleFonts.passionOne(
               color: Colors.white,
               fontStyle: FontStyle.normal,
-              fontWeight: FontWeight.w900,
-              fontSize: 18.0,
+              fontWeight: FontWeight.w600,
+              fontSize: 24.0,
             ),
           ),
         ),
@@ -102,56 +104,16 @@ class _CardPageState extends State<CardPage> {
 
   Container _buildToolBar() {
     return Container(
-      color: Colors.white,
+      //color: Colors.white,
       height: 70,
       child: Wrap(
         children: [
-          Container(
-            width: 316,
-            height: 40,
-            child: TextField(
-              maxLines: 1,
-              textAlignVertical: TextAlignVertical.center,
-              controller: searchController,
-              textInputAction: TextInputAction.done,
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                  //labelText: "Buscar",
-                  //hintText: "Guaraná",
-                  contentPadding: EdgeInsets.zero,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey[300], width: 2.0),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: Color.fromRGBO(255, 161, 73, 1), width: 2.0),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
-                    ),
-                  ),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    size: 35,
-                    color: Color.fromRGBO(255, 161, 73, 1),
-                  ),
-                  suffixIcon: searchController.text.isEmpty
-                      ? Container(
-                          width: 0,
-                        )
-                      : IconButton(
-                          icon: Icon(Icons.close),
-                          onPressed: () => searchController.clear(),
-                        )),
-            ),
-          ),
+          MyApp.searchBarBuilderStatic(searchController),
           ElevatedButton(
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CartPage()),
+                MaterialPageRoute(builder: (context) => CartListingPage()),
               );
             },
             style: ElevatedButton.styleFrom(
@@ -183,7 +145,7 @@ class _CardPageState extends State<CardPage> {
           ),
         ),
         child: Text(
-          'Ver meu histórico',
+          '>  Ver meu histórico  <',
           style: GoogleFonts.passionOne(
             color: Colors.white,
             fontStyle: FontStyle.normal,
@@ -195,7 +157,8 @@ class _CardPageState extends State<CardPage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ProductPageClass(name: "Historico")),
+                builder: (context) =>
+                    CategoryListingPageClass(name: "Historico")),
           );
         },
       ),
@@ -216,7 +179,7 @@ class _CardPageState extends State<CardPage> {
         Container(
           child: stackedButtonImage(
             imageAddress: 'assets/images/categories/porcoes.png',
-            categoryName: "Porções",
+            categoryName: "Portions",
           ),
         ),
         Container(
@@ -254,6 +217,7 @@ class _CardPageState extends State<CardPage> {
     String categoryName = "",
   }) {
     return Stack(
+      clipBehavior: Clip.none,
       children: [
         Container(
           width: containerWidth,
@@ -263,16 +227,18 @@ class _CardPageState extends State<CardPage> {
               ElevatedButton(
                 child: Text(
                   categoryName,
-                  style: GoogleFonts.metrophobic(
-                    color: Colors.black,
+                  style: GoogleFonts.acme(
+                    color: Colors.grey[700],
                     fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w300,
                     fontSize: 18.0,
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
+                  alignment: Alignment.centerLeft,
                   primary: Color.fromARGB(255, 253, 237, 231),
                   minimumSize: Size(containerWidth, containerHeight),
+                  elevation: 0.0,
                   shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(15.0),
                   ),
@@ -282,7 +248,7 @@ class _CardPageState extends State<CardPage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            ProductPageClass(name: categoryName)),
+                            CategoryListingPageClass(name: categoryName)),
                   );
                 },
               ),
@@ -291,19 +257,19 @@ class _CardPageState extends State<CardPage> {
         ),
         Positioned(
           // image in right
-          top: -3,
-          right: -5,
+          top: -20,
+          right: -30,
           child: new Image.asset(
             imageAddress,
-            width: 50.0,
-            height: 50.0,
+            width: 80.0,
+            height: 80.0,
           ),
         )
       ],
     );
   }
 
-  _buildVerticalSpace({double height = 20.0}) {
+  _buildVerticalSpace({double height = 26}) {
     return SizedBox(height: height);
   }
 }

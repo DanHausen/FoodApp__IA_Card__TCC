@@ -2,27 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ia_card/models/Product.dart';
 import 'package:ia_card/widgets/Cart.dart';
-import 'package:ia_card/pages/cart_page.dart';
+import 'package:ia_card/pages/Cart_listing_page.dart';
 
 int qtdeItems = 1;
 
-class ProductDetails extends StatelessWidget {
+class ProductSelectedDetails extends StatelessWidget {
   final Product productModel;
   // ignore: non_constant_identifier_names
-  const ProductDetails({Key key, @required this.productModel})
+  const ProductSelectedDetails({Key key, @required this.productModel})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 70,
+        elevation: 1,
+        centerTitle: true,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(25),
           ),
         ),
-        toolbarHeight: 75,
-        centerTitle: true,
         backgroundColor: Color.fromRGBO(255, 161, 73, 1),
         actions: <Widget>[
           Padding(
@@ -33,7 +34,7 @@ class ProductDetails extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CartPage()),
+                  MaterialPageRoute(builder: (context) => CartListingPage()),
                 );
               },
             ),
@@ -113,7 +114,7 @@ class _ProductPageState extends State<ProductPage> {
             ],
           ),
           SizedBox(
-            height: 8,
+            height: 4,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Container(
@@ -227,7 +228,7 @@ class _ProductPageState extends State<ProductPage> {
                     width: 100,
                     child: TextButton(
                       style: TextButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Color.fromRGBO(255, 161, 73, 1),
                       ),
                       child: Text(
                         'ADICIONAR',

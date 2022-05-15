@@ -2,23 +2,26 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ia_card/main.dart';
 import 'package:ia_card/models/Product.dart';
-import 'package:ia_card/pages/cart_page.dart';
+import 'package:ia_card/pages/Cart_listing_page.dart';
 import 'package:ia_card/widgets/Product_tile.dart';
 
-class ProductPageClass extends StatefulWidget {
-  ProductPageClass({this.name});
+class CategoryListingPageClass extends StatefulWidget {
+  CategoryListingPageClass({this.name});
   final String name;
 
   @override
-  _ProductPageClassState createState() => _ProductPageClassState();
+  _CategoryListingPageClassState createState() =>
+      _CategoryListingPageClassState();
 }
 
-class _ProductPageClassState extends State<ProductPageClass> {
+class _CategoryListingPageClassState extends State<CategoryListingPageClass> {
   final fb = FirebaseDatabase.instance.ref().child("Products");
   final List<Product> list = [];
   static var productList = {};
   int n = 01;
+  final searchController = TextEditingController();
 
   @override
   void initState() {
@@ -58,7 +61,8 @@ class _ProductPageClassState extends State<ProductPageClass> {
   SearchBar searchBar;
   AppBar buildAppBar(BuildContext context) {
     return new AppBar(
-      toolbarHeight: 90,
+      toolbarHeight: 70,
+      elevation: 1,
       centerTitle: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
@@ -74,7 +78,7 @@ class _ProductPageClassState extends State<ProductPageClass> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CartPage()),
+                MaterialPageRoute(builder: (context) => CartListingPage()),
               );
             },
           ),
@@ -89,7 +93,7 @@ class _ProductPageClassState extends State<ProductPageClass> {
     );
   }
 
-  _ProductPageClassState() {
+  _CategoryListingPageClassState() {
     searchBar = new SearchBar(
         inBar: false,
         setState: setState,
@@ -107,12 +111,9 @@ class _ProductPageClassState extends State<ProductPageClass> {
             return Text('Algo deu errado');
           } else if (snapshot.hasData) {
             return new Scaffold(
+              resizeToAvoidBottomInset: false,
               appBar: searchBar.build(context),
-              body: ListView.builder(
-                  itemCount: productList[widget.name].length,
-                  itemBuilder: (ctx, i) {
-                    return ProductTile(list[checkNameProduct()]);
-                  }),
+              body: _buildBody(),
             );
           } else {
             return Center(
@@ -121,6 +122,29 @@ class _ProductPageClassState extends State<ProductPageClass> {
               ),
             );
           }
+        });
+  }
+
+  _buildBody() {
+    return Column(
+      children: [
+        _buildVerticalSpace(height: 39),
+        MyApp.searchBarBuilderStatic(searchController),
+        _buildVerticalSpace(height: 46),
+        Expanded(child: _listBuilder()),
+      ],
+    );
+  }
+
+  _buildVerticalSpace({double height = 26.0}) {
+    return SizedBox(height: height);
+  }
+
+  ListView _listBuilder() {
+    return ListView.builder(
+        itemCount: productList[widget.name].length,
+        itemBuilder: (ctx, i) {
+          return ProductTile(list[checkNameProduct()]);
         });
   }
 
