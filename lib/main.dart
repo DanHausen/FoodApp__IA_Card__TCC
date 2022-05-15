@@ -17,26 +17,32 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'IA Card',
-        theme: new ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          textTheme: TextTheme(
-            bodyText1: TextStyle(color: kTextColor),
-            bodyText2: TextStyle(color: kTextColor),
+    return GestureDetector(
+      onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'IA Card',
+          theme: new ThemeData(
+            scaffoldBackgroundColor: Colors.white,
+            backgroundColor: Colors.white,
+            textTheme: TextTheme(
+              bodyText1: TextStyle(color: kTextColor),
+              bodyText2: TextStyle(color: kTextColor),
+            ),
+            visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: CustomSplash(
-          imagePath: 'assets/images/logo.png',
-          backGroundColor: Colors.orange,
-          animationEffect: 'zoom-in',
-          logoSize: 200,
-          home: CardPage(),
-          duration: 2500,
-          type: CustomSplashType.StaticDuration,
-        ));
+          home: CustomSplash(
+            imagePath: 'assets/images/logo.png',
+            backGroundColor: Colors.orange,
+            animationEffect: 'zoom-in',
+            logoSize: 200,
+            home: CardPage(),
+            duration: 2500,
+            type: CustomSplashType.StaticDuration,
+          )),
+    );
   }
 }
 

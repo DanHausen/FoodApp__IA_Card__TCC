@@ -11,37 +11,32 @@ class CardPage extends StatefulWidget {
 
 class _CardPageState extends State<CardPage> {
   SearchBar searchBar;
+  final searchController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    searchController.addListener(() {
+      setState(() {});
+    });
+  }
 
   AppBar buildAppBar(BuildContext context) {
     return new AppBar(
-      toolbarHeight: 150,
+      toolbarHeight: 70,
+      elevation: 0.0,
       centerTitle: true,
-      leading: Padding(
-        padding: const EdgeInsets.only(left: 30.0),
-        child: IconButton(
-          icon: Icon(Icons.search, size: 35),
-          onPressed: () {},
+      title: new Text(
+        'Restaurante',
+        style: GoogleFonts.passionOne(
+            fontStyle: FontStyle.normal, fontSize: 40, color: Colors.white),
+      ),
+      backgroundColor: Color.fromRGBO(255, 161, 73, 1),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(25),
         ),
       ),
-      title: new Text('Restaurante',
-          style: GoogleFonts.passionOne(
-              fontStyle: FontStyle.normal, fontSize: 40)),
-      actions: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(right: 30.0),
-          child: IconButton(
-            icon: Icon(Icons.shopping_basket, size: 35),
-            color: Colors.white,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => CartPage()),
-              );
-            },
-          ),
-        )
-      ],
-      backgroundColor: Color.fromRGBO(255, 161, 73, 1),
     );
   }
 
@@ -56,346 +51,119 @@ class _CardPageState extends State<CardPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: searchBar.build(context),
       body: _buildBody(),
     );
   }
 
   _buildBody() {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          _buildVerticalSpace(),
-          Text('Categorias',
-              style: GoogleFonts.metrophobic(
-                  fontStyle: FontStyle.normal,
-                  fontSize: 25,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold)),
-          _buildVerticalSpace(),
-          _buildCategory(),
-          _buildVerticalSpace(),
-          Text('Mais pedidos',
-              style: GoogleFonts.metrophobic(
-                  fontStyle: FontStyle.normal,
-                  fontSize: 25,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold)),
-          _buildVerticalSpace(),
-          _buildPedidos(),
-        ],
-      ),
+    return Column(
+      children: [
+        _buildVerticalSpace(height: 26),
+        _buildToolBar(),
+        _buildVerticalSpace(height: 26),
+        _categoryBuilder(),
+        _buildVerticalSpace(height: 26),
+        _buildCategoryOptions(),
+        _buildVerticalSpace(height: 54),
+        _buildHistoryButton(),
+      ],
     );
   }
 
-  _buildCategory() {
+  Align _categoryBuilder() {
     return Align(
-      alignment: Alignment.center,
-      child: Wrap(
-        spacing: 30, // gap between adjacent chips
-        runSpacing: 20, // gap between lines
-        children: <Widget>[
-          Container(
-            child: ButtonTheme(
-                buttonColor: Colors.white,
-                child: Stack(children: [
-                  Container(
-                    width: 170,
-                    height: 40.0,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      // ignore: deprecated_member_use
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                          side: BorderSide(
-                            width: 2,
-                            color: Colors.orange,
-                          ),
-                        ),
-                        child: Text(
-                          'Drink',
-                          style: GoogleFonts.metrophobic(
-                            color: Colors.grey[700],
-                            fontStyle: FontStyle.normal,
-                            fontSize: 18.0,
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    ProductPageClass(name: "Drink")),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    // image in right
-                    top: -3,
-                    right: -5,
-                    child: new Image.asset(
-                      'assets/images/categories/bebidas.png',
-                      width: 50.0,
-                      height: 50.0,
-                    ),
-                  )
-                ])),
+      alignment: Alignment.centerLeft,
+      child: Container(
+        width: 225,
+        decoration: new BoxDecoration(
+          color: Color.fromRGBO(255, 161, 73, 1),
+          borderRadius: new BorderRadius.only(
+            bottomRight: const Radius.circular(25),
+            topRight: const Radius.circular(25),
           ),
-          Container(
-            child: ButtonTheme(
-                buttonColor: Colors.white,
-                child: Stack(children: [
-                  Container(
-                    width: 170,
-                    height: 40.0,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      // ignore: deprecated_member_use
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                          side: BorderSide(
-                            width: 2,
-                            color: Colors.orange,
-                          ),
-                        ),
-                        child: Text(
-                          'Porções',
-                          style: GoogleFonts.metrophobic(
-                            color: Colors.grey[700],
-                            fontStyle: FontStyle.normal,
-                            fontSize: 18.0,
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    ProductPageClass(name: "Portions")),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    // image in right
-                    top: -3,
-                    right: -5,
-                    child: new Image.asset(
-                      'assets/images/categories/porcoes.png',
-                      width: 50.0,
-                      height: 50.0,
-                    ),
-                  )
-                ])),
-          ),
-          Container(
-            child: ButtonTheme(
-                buttonColor: Colors.white,
-                child: Stack(children: [
-                  Container(
-                    width: 170,
-                    height: 40.0,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      // ignore: deprecated_member_use
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                          side: BorderSide(
-                            width: 2,
-                            color: Colors.orange,
-                          ),
-                        ),
-                        child: Text(
-                          'Lanches',
-                          style: GoogleFonts.metrophobic(
-                            color: Colors.grey[700],
-                            fontStyle: FontStyle.normal,
-                            fontSize: 18.0,
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    ProductPageClass(name: "Lanches")),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    // image in right
-                    top: -3,
-                    right: -5,
-                    child: new Image.asset(
-                      'assets/images/categories/lanches.png',
-                      width: 50.0,
-                      height: 50.0,
-                    ),
-                  )
-                ])),
-          ),
-          Container(
-            child: ButtonTheme(
-                buttonColor: Colors.white,
-                child: Stack(children: [
-                  Container(
-                    width: 170,
-                    height: 40.0,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      // ignore: deprecated_member_use
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                          side: BorderSide(
-                            width: 2,
-                            color: Colors.orange,
-                          ),
-                        ),
-                        child: Text(
-                          'A la carte',
-                          style: GoogleFonts.metrophobic(
-                            color: Colors.grey[700],
-                            fontStyle: FontStyle.normal,
-                            fontSize: 18.0,
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    ProductPageClass(name: "A la carte")),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    // image in right
-                    top: -3,
-                    right: -5,
-                    child: new Image.asset(
-                      'assets/images/categories/a_la_carte.png',
-                      width: 50.0,
-                      height: 50.0,
-                    ),
-                  )
-                ])),
-          ),
-          Container(
-            child: ButtonTheme(
-              buttonColor: Colors.white,
-              child: Stack(
-                children: [
-                  Container(
-                    width: 170,
-                    height: 40.0,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      // ignore: deprecated_member_use
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                          side: BorderSide(
-                            width: 2,
-                            color: Colors.orange,
-                          ),
-                        ),
-                        child: Text(
-                          'Saladas',
-                          style: GoogleFonts.metrophobic(
-                            color: Colors.grey[700],
-                            fontStyle: FontStyle.normal,
-                            fontSize: 18.0,
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    ProductPageClass(name: "Saladas")),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    // image in right
-                    top: -3,
-                    right: -5,
-                    child: new Image.asset(
-                      'assets/images/categories/saladas.png',
-                      width: 50.0,
-                      height: 50.0,
-                    ),
-                  )
-                ],
-              ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: Text(
+            'Categorias',
+            style: GoogleFonts.metrophobic(
+              color: Colors.white,
+              fontStyle: FontStyle.normal,
+              fontWeight: FontWeight.w900,
+              fontSize: 18.0,
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Container _buildToolBar() {
+    return Container(
+      color: Colors.white,
+      height: 70,
+      child: Wrap(
+        children: [
           Container(
-            child: ButtonTheme(
-              buttonColor: Colors.white,
-              child: Stack(
-                children: [
-                  Container(
-                    width: 170,
-                    height: 40.0,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      // ignore: deprecated_member_use
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                          side: BorderSide(
-                            width: 2,
-                            color: Colors.orange,
-                          ),
-                        ),
-                        child: Text(
-                          'Sobremesas',
-                          style: GoogleFonts.metrophobic(
-                            color: Colors.grey[700],
-                            fontStyle: FontStyle.normal,
-                            fontSize: 18.0,
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    ProductPageClass(name: "Sobremesas")),
-                          );
-                        },
-                      ),
+            width: 316,
+            height: 40,
+            child: TextField(
+              maxLines: 1,
+              textAlignVertical: TextAlignVertical.center,
+              controller: searchController,
+              textInputAction: TextInputAction.done,
+              keyboardType: TextInputType.text,
+              decoration: InputDecoration(
+                  //labelText: "Buscar",
+                  //hintText: "Guaraná",
+                  contentPadding: EdgeInsets.zero,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey[300], width: 2.0),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
                     ),
                   ),
-                  Positioned(
-                    // image in right
-                    top: -3,
-                    right: -5,
-                    child: new Image.asset(
-                      'assets/images/categories/sobremesas.png',
-                      width: 50.0,
-                      height: 50.0,
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        color: Color.fromRGBO(255, 161, 73, 1), width: 2.0),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
                     ),
-                  )
-                ],
-              ),
+                  ),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    size: 35,
+                    color: Color.fromRGBO(255, 161, 73, 1),
+                  ),
+                  suffixIcon: searchController.text.isEmpty
+                      ? Container(
+                          width: 0,
+                        )
+                      : IconButton(
+                          icon: Icon(Icons.close),
+                          onPressed: () => searchController.clear(),
+                        )),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CartPage()),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              primary: Colors.white,
+              elevation: 0.0,
+              minimumSize: Size.zero,
+              padding: EdgeInsets.zero,
+            ),
+            child: Icon(
+              Icons.shopping_cart,
+              size: 35,
+              color: Color.fromRGBO(255, 161, 73, 1),
             ),
           ),
         ],
@@ -403,33 +171,135 @@ class _CardPageState extends State<CardPage> {
     );
   }
 
-  _buildPedidos() {
-    return Expanded(
-      child: GridView.builder(
-        itemCount: 2,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 20,
-          crossAxisSpacing: 20,
+  Container _buildHistoryButton() {
+    return Container(
+      width: 269,
+      height: 41,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: Color.fromRGBO(255, 161, 73, 1),
+          shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(15.0),
+          ),
         ),
-        itemBuilder: _buildTile,
+        child: Text(
+          'Ver meu histórico',
+          style: GoogleFonts.passionOne(
+            color: Colors.white,
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.w400,
+            fontSize: 24.0,
+          ),
+        ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ProductPageClass(name: "Historico")),
+          );
+        },
       ),
     );
   }
 
-  Widget _buildTile(context, index) {
-    return GestureDetector(
-      // ///   onTap: () => _onMarkTile(index),
+  _buildCategoryOptions() {
+    return Wrap(
+      spacing: 39, // gap between adjacent chips
+      runSpacing: 35, // gap between lines
+      children: <Widget>[
+        Container(
+          child: stackedButtonImage(
+            imageAddress: 'assets/images/categories/bebidas.png',
+            categoryName: "Drink",
+          ),
+        ),
+        Container(
+          child: stackedButtonImage(
+            imageAddress: 'assets/images/categories/porcoes.png',
+            categoryName: "Porções",
+          ),
+        ),
+        Container(
+          child: stackedButtonImage(
+            imageAddress: 'assets/images/categories/lanches.png',
+            categoryName: "Lanches",
+          ),
+        ),
+        Container(
+          child: stackedButtonImage(
+            imageAddress: 'assets/images/categories/a_la_carte.png',
+            categoryName: "A la carte",
+          ),
+        ),
+        Container(
+          child: stackedButtonImage(
+            imageAddress: 'assets/images/categories/saladas.png',
+            categoryName: "Saladas",
+          ),
+        ),
+        Container(
+          child: stackedButtonImage(
+            imageAddress: 'assets/images/categories/sobremesas.png',
+            categoryName: "Sobremesas",
+          ),
+        ),
+      ],
+    );
+  }
 
-      child: Container(
-        decoration: BoxDecoration(
-            border: Border.all(
-              color: Color.fromRGBO(196, 196, 196, 1),
-            ),
-            borderRadius: BorderRadius.all(Radius.circular(20))),
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        child: Center(),
-      ),
+  Stack stackedButtonImage({
+    String imageAddress = "",
+    double containerWidth = 149,
+    double containerHeight = 42,
+    String categoryName = "",
+  }) {
+    return Stack(
+      children: [
+        Container(
+          width: containerWidth,
+          height: containerHeight,
+          child: Row(
+            children: [
+              ElevatedButton(
+                child: Text(
+                  categoryName,
+                  style: GoogleFonts.metrophobic(
+                    color: Colors.black,
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 18.0,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: Color.fromARGB(255, 253, 237, 231),
+                  minimumSize: Size(containerWidth, containerHeight),
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(15.0),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            ProductPageClass(name: categoryName)),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+        Positioned(
+          // image in right
+          top: -3,
+          right: -5,
+          child: new Image.asset(
+            imageAddress,
+            width: 50.0,
+            height: 50.0,
+          ),
+        )
+      ],
     );
   }
 

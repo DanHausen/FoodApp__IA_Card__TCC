@@ -16,6 +16,11 @@ class ProductDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(25),
+          ),
+        ),
         toolbarHeight: 75,
         centerTitle: true,
         backgroundColor: Color.fromRGBO(255, 161, 73, 1),

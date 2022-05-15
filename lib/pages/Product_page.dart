@@ -60,11 +60,16 @@ class _ProductPageClassState extends State<ProductPageClass> {
     return new AppBar(
       toolbarHeight: 90,
       centerTitle: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(25),
+        ),
+      ),
       actions: <Widget>[
         Padding(
           padding: const EdgeInsets.only(right: 30.0),
           child: IconButton(
-            icon: Icon(Icons.shopping_basket, size: 35),
+            icon: Icon(Icons.shopping_cart, size: 35),
             color: Colors.white,
             onPressed: () {
               Navigator.push(
@@ -75,9 +80,11 @@ class _ProductPageClassState extends State<ProductPageClass> {
           ),
         )
       ],
-      title: new Text(widget.name,
-          style: GoogleFonts.passionOne(
-              fontStyle: FontStyle.normal, fontSize: 40)),
+      title: new Text(
+        widget.name,
+        style:
+            GoogleFonts.passionOne(fontStyle: FontStyle.normal, fontSize: 40),
+      ),
       backgroundColor: Color.fromRGBO(255, 161, 73, 1),
     );
   }
@@ -109,7 +116,9 @@ class _ProductPageClassState extends State<ProductPageClass> {
             );
           } else {
             return Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.orange),
+              ),
             );
           }
         });
