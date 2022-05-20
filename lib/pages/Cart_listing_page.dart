@@ -18,7 +18,7 @@ class _CartListingPageState extends State<CartListingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 100,
+        toolbarHeight: 70,
         centerTitle: true,
         title: Column(
           children: [
@@ -27,7 +27,6 @@ class _CartListingPageState extends State<CartListingPage> {
               style: GoogleFonts.passionOne(
                   fontStyle: FontStyle.normal, fontSize: 40),
             ),
-            Text("$cartAmount items")
           ],
         ),
         backgroundColor: Color.fromRGBO(255, 161, 73, 1),
@@ -39,6 +38,13 @@ class _CartListingPageState extends State<CartListingPage> {
       ),
       body: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Text(
+              "$cartAmount items",
+              style: TextStyle(color: Colors.grey[500]),
+            ),
+          ),
           Expanded(
             child: Container(
               child: new ListView.builder(

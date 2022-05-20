@@ -19,7 +19,6 @@ class CategoryListingPageClass extends StatefulWidget {
 class _CategoryListingPageClassState extends State<CategoryListingPageClass> {
   final fb = FirebaseDatabase.instance.ref().child("Products");
   final List<Product> list = [];
-  static var productList = {};
   int n = 01;
   final searchController = TextEditingController();
 
@@ -27,31 +26,29 @@ class _CategoryListingPageClassState extends State<CategoryListingPageClass> {
   void initState() {
     super.initState();
     fb.once().then((DatabaseEvent snapEvent) {
-      var value = snapEvent.snapshot.value;
+      var value =
+          snapEvent.snapshot.value; //value recebe tudo que está dentro do banco
       list.clear();
       (value as dynamic).forEach(
+        //value aqui é um map do tipo do produto, ex: "lanches ou a la carte"
         (key, value) {
-          Product product = new Product(
-            id: value[n.toString().padLeft(n + 1, '0')]["id"],
-            name: value[n.toString().padLeft(n + 1, '0')]["name"],
-            filtros: value[n.toString().padLeft(n + 1, '0')]["filtros"],
-            price: value[n.toString().padLeft(n + 1, '0')]["price"],
-            description: value[n.toString().padLeft(n + 1, '0')]["description"],
-            image: value[n.toString().padLeft(n + 1, '0')]["image"],
-            key: key,
-          );
-          productList[key] = [
-            [
-              product.id,
-              product.name,
-              product.filtros,
-              product.price,
-              product.description,
-              product.image,
-              product.key
-            ]
-          ];
-          list.add(product);
+          //Key é o nome do tipo de produto, ex: "lanches"
+          if (widget.name == key) {
+            (value as dynamic).forEach(
+              (k, v) {
+                Product product = new Product(
+                  id: v["id"],
+                  name: v["name"],
+                  filtros: v["filtros"],
+                  price: v["price"],
+                  description: v["description"],
+                  image: v["image"],
+                  key: key,
+                );
+                list.add(product);
+              },
+            );
+          }
         },
       );
       setState(() {});
@@ -142,16 +139,10 @@ class _CategoryListingPageClassState extends State<CategoryListingPageClass> {
 
   ListView _listBuilder() {
     return ListView.builder(
-        itemCount: productList[widget.name].length,
-        itemBuilder: (ctx, i) {
-          return ProductTile(list[checkNameProduct()]);
-        });
-  }
-
-  int checkNameProduct() {
-    for (var i = 0; i < productList.length; i++) {
-      if (widget.name == list[i].key) return i;
-    }
-    return null;
+      itemCount: list.length,
+      itemBuilder: (ctx, i) {
+        return ProductTile(list[i]);
+      },
+    );
   }
 }
