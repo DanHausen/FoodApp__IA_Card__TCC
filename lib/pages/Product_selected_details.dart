@@ -2,33 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ia_card/models/Product.dart';
 import 'package:ia_card/widgets/Cart.dart';
-import 'package:ia_card/pages/cart_page.dart';
+import 'package:ia_card/pages/Cart_listing_page.dart';
 
 int qtdeItems = 1;
 
-class ProductDetails extends StatelessWidget {
+class ProductSelectedDetails extends StatelessWidget {
   final Product productModel;
   // ignore: non_constant_identifier_names
-  const ProductDetails({Key key, @required this.productModel})
+  const ProductSelectedDetails({Key key, @required this.productModel})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 75,
+        toolbarHeight: 70,
+        elevation: 1,
         centerTitle: true,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(25),
+          ),
+        ),
         backgroundColor: Color.fromRGBO(255, 161, 73, 1),
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.only(right: 30.0),
             child: IconButton(
-              icon: Icon(Icons.shopping_basket, size: 35),
+              icon: Icon(Icons.shopping_cart, size: 35),
               color: Colors.white,
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CartPage()),
+                  MaterialPageRoute(builder: (context) => CartListingPage()),
                 );
               },
             ),
@@ -54,6 +60,12 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
   var item = new Map();
+
+  @override
+  void initState() {
+    qtdeItems = 1;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +120,7 @@ class _ProductPageState extends State<ProductPage> {
             ],
           ),
           SizedBox(
-            height: 8,
+            height: 4,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Container(
@@ -161,47 +173,63 @@ class _ProductPageState extends State<ProductPage> {
                   labelText: 'obs: ',
                 ),
               )),
-          SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.only(bottom: 20.0),
+            padding: const EdgeInsets.symmetric(vertical: 30.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                   ),
                   child: Row(
                     children: [
-                      InkWell(
-                          onTap: () {
-                            //Adicionei o setState para atualizar o valor
-                            if (qtdeItems > 1) {
-                              setState(() {
-                                qtdeItems--;
-                              });
-                            }
-                          },
-                          child: Icon(
-                            Icons.remove,
-                            color: Colors.black54,
-                            size: 20,
-                          )),
+                      Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            color: Colors.grey[100]),
+                        child: InkWell(
+                            onTap: () {
+                              //Adicionei o setState para atualizar o valor
+                              if (qtdeItems > 1) {
+                                setState(() {
+                                  qtdeItems--;
+                                });
+                              }
+                            },
+                            child: Icon(
+                              Icons.remove,
+                              color: Colors.grey[900],
+                              size: 25,
+                            )),
+                      ),
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 10),
+                        width: 50,
+                        height: 50,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: Colors.black12),
-                        child: Text(
-                          qtdeItems.toString(),
-                          style: GoogleFonts.roboto(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                            borderRadius: BorderRadius.circular(4),
+                            color: Color.fromRGBO(255, 161, 73, 1)),
+                        child: Align(
+                          child: Text(
+                            qtdeItems.toString(),
+                            style: GoogleFonts.roboto(
+                                color: Colors.white,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
-                      InkWell(
+                      Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            color: Colors.grey[100]),
+                        child: InkWell(
                           onTap: () {
                             setState(() {
                               qtdeItems++;
@@ -209,30 +237,39 @@ class _ProductPageState extends State<ProductPage> {
                           },
                           child: Icon(
                             Icons.add,
-                            color: Colors.black54,
-                            size: 20,
-                          )),
+                            color: Colors.grey[900],
+                            size: 25,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(right: 40),
+                  padding: EdgeInsets.only(right: 20),
                   child: (SizedBox(
                     height: 50,
-                    width: 100,
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                    width: 125,
+                    child: InkWell(
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(255, 161, 73, 1),
+                        ),
+                        child: Text(
+                          'ADICIONAR',
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900),
+                        ),
+                        onPressed: () {
+                          Cart.itemAddToCart(
+                              widget.productModel.name,
+                              qtdeItems,
+                              double.parse(widget.productModel.price) *
+                                  qtdeItems);
+                        },
                       ),
-                      child: Text(
-                        'ADICIONAR',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w900),
-                      ),
-                      onPressed: () {
-                        Cart.itemAddToCart(widget.productModel.name, qtdeItems,
-                            double.parse(widget.productModel.price));
-                      },
                     ),
                   )),
                 ),
