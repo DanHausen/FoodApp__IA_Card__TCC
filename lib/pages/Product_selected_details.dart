@@ -29,7 +29,7 @@ class ProductSelectedDetails extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 30.0),
             child: IconButton(
-              icon: Icon(Icons.shopping_basket, size: 35),
+              icon: Icon(Icons.shopping_cart, size: 35),
               color: Colors.white,
               onPressed: () {
                 Navigator.push(
@@ -60,6 +60,12 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
   var item = new Map();
+
+  @override
+  void initState() {
+    qtdeItems = 1;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -244,21 +250,26 @@ class _ProductPageState extends State<ProductPage> {
                   child: (SizedBox(
                     height: 50,
                     width: 125,
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        backgroundColor: Color.fromRGBO(255, 161, 73, 1),
+                    child: InkWell(
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(255, 161, 73, 1),
+                        ),
+                        child: Text(
+                          'ADICIONAR',
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900),
+                        ),
+                        onPressed: () {
+                          Cart.itemAddToCart(
+                              widget.productModel.name,
+                              qtdeItems,
+                              double.parse(widget.productModel.price) *
+                                  qtdeItems);
+                        },
                       ),
-                      child: Text(
-                        'ADICIONAR',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w900),
-                      ),
-                      onPressed: () {
-                        Cart.itemAddToCart(widget.productModel.name, qtdeItems,
-                            double.parse(widget.productModel.price));
-                      },
                     ),
                   )),
                 ),

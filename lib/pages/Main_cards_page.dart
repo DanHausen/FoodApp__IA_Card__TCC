@@ -5,6 +5,7 @@ import 'package:ia_card/pages/Category_listing_page.dart';
 import 'package:ia_card/pages/Cart_listing_page.dart';
 
 import '../main.dart';
+import 'History_listing_page.dart';
 
 class MainCardsPage extends StatefulWidget {
   @override
@@ -158,7 +159,7 @@ class _MainCardsPageState extends State<MainCardsPage> {
             context,
             MaterialPageRoute(
                 builder: (context) =>
-                    CategoryListingPageClass(name: "Historico")),
+                    HistoryListingPageClass(name: "Historico")),
           );
         },
       ),

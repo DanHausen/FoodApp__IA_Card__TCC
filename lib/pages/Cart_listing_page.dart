@@ -13,6 +13,7 @@ class _CartListingPageState extends State<CartListingPage> {
   var cartAmount = Cart.cartAmount;
   var cartLength = Cart.cartList.length;
   var cartList = Cart.cartList;
+  var cartTotalPrice = Cart.totalPrice;
 
   @override
   Widget build(BuildContext context) {
@@ -53,32 +54,57 @@ class _CartListingPageState extends State<CartListingPage> {
                       buildCartCard(context, index)),
             ),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Color.fromRGBO(255, 161, 73, 1),
-                elevation: 0.0,
-              ),
-              onPressed: () {},
-              child: Text(
-                "Finalizar compra",
-                style: GoogleFonts.passionOne(
-                  color: Colors.white,
-                  fontStyle: FontStyle.normal,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 24.0,
-                ),
-              ),
-            ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: totalCartPricingText(),
           ),
+          finishCartButton(cartAmount),
         ],
       ),
     );
   }
 
+  Align totalCartPricingText() => Align(
+        alignment: Alignment.bottomCenter,
+        child: Text(
+          'R\$ ' + "$cartTotalPrice",
+          style: TextStyle(
+            color: Colors.grey[600],
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+        ),
+      );
+
+  Align finishCartButton(int cartAmount) {
+    if (cartAmount >= 1) {
+      return Align(
+        alignment: Alignment.bottomCenter,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Color.fromRGBO(255, 161, 73, 1),
+            elevation: 0.0,
+          ),
+          onPressed: () {},
+          child: Text(
+            "Finalizar compra",
+            style: GoogleFonts.passionOne(
+              color: Colors.white,
+              fontStyle: FontStyle.normal,
+              fontWeight: FontWeight.w400,
+              fontSize: 24.0,
+            ),
+          ),
+        ),
+      );
+    } else {
+      return Align(
+        child: Text(""),
+      );
+    }
+  }
+
   Widget buildCartCard(BuildContext context, int index) {
-    final cart = cartList[index];
     return new Container(
       decoration: BoxDecoration(
         border: Border(
@@ -99,7 +125,7 @@ class _CartListingPageState extends State<CartListingPage> {
                   children: [
                     Expanded(
                       child: Text(
-                        cart["Name"],
+                        cartList.values.elementAt(index)["Name"],
                         style: new TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -108,27 +134,38 @@ class _CartListingPageState extends State<CartListingPage> {
                     ),
                     Spacer(),
                     TextButton(
-                        child: Icon(
-                          Icons.delete,
-                          size: 25,
-                          color: Color.fromRGBO(255, 161, 73, 1),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            Cart.deleteSelectedCartItem(index);
-                            cartLength = Cart.cartList.length;
-                            cartAmount = Cart.cartAmount;
-                          });
-                        }),
+                      child: Icon(
+                        Icons.delete,
+                        size: 25,
+                        color: Color.fromRGBO(255, 161, 73, 1),
+                      ),
+                      onPressed: () {
+                        Cart.deleteSelectedCartItem(
+                            cartList.keys.elementAt(index));
+                        cartLength = Cart.cartList.length;
+                        cartAmount = Cart.cartAmount;
+                        cartList = Cart.cartList;
+                        cartTotalPrice = Cart.totalPrice;
+                        setState(() {});
+                      },
+                    ),
                   ],
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Row(children: [
-                    Text("Quantidade: " + cart["Quantidade"].toString(),
+                    Text(
+                        "Quantidade: " +
+                            cartList.values
+                                .elementAt(index)["Quantidade"]
+                                .toString(),
                         style: new TextStyle(fontSize: 16)),
                     Spacer(),
-                    Text('R\$ ' + cart["Price"].toString(),
+                    Text(
+                        'R\$ ' +
+                            cartList.values
+                                .elementAt(index)["Price"]
+                                .toString(),
                         style: new TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold)),
                   ]),

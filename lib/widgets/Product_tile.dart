@@ -33,7 +33,7 @@ class ProductTile extends StatelessWidget {
           ),
         ),
         trailing: Text(
-          "R\$ " + product.price,
+          "R\$ " + product.price.toString(),
           style: GoogleFonts.metrophobic(
             fontStyle: FontStyle.normal,
             color: Colors.grey[800],
