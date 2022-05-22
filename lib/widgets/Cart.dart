@@ -39,21 +39,14 @@ class Cart {
   }
 
   static void deleteSelectedCartItem(int _key) {
-    if (!cartList.isEmpty) {
-      int amountSelected = cartList[_key]["Quantidade"];
-      if (amountSelected == null) {
-        return;
-      } else {
-        cartAmount -= amountSelected;
-        cartList.remove(_key);
-        totalPriceUpdate(_key);
-      }
-    } else {
+    int amountSelected = cartList[_key]["Quantidade"];
+    var priceSelected = cartList[_key]["Price"];
+    if (amountSelected == null) {
       return;
+    } else {
+      cartAmount -= amountSelected;
+      totalPrice -= priceSelected;
+      cartList.remove(_key);
     }
-  }
-
-  static void totalPriceUpdate([var _key]) {
-    totalPrice -= cartList.values.elementAt(_key)["Price"];
   }
 }

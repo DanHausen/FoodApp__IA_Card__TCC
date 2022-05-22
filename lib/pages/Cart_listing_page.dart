@@ -56,7 +56,7 @@ class _CartListingPageState extends State<CartListingPage> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: totalCartPricingText(),
+            child: totalCartPricingText(cartAmount),
           ),
           finishCartButton(cartAmount),
         ],
@@ -64,7 +64,9 @@ class _CartListingPageState extends State<CartListingPage> {
     );
   }
 
-  Align totalCartPricingText() => Align(
+  Align totalCartPricingText(int cartAmount) {
+    if (cartAmount >= 1) {
+      return Align(
         alignment: Alignment.bottomCenter,
         child: Text(
           'R\$ ' + "$cartTotalPrice",
@@ -75,6 +77,12 @@ class _CartListingPageState extends State<CartListingPage> {
           ),
         ),
       );
+    } else {
+      return Align(
+        child: Text(""),
+      );
+    }
+  }
 
   Align finishCartButton(int cartAmount) {
     if (cartAmount >= 1) {
