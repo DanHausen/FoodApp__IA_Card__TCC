@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ia_card/models/Product.dart';
 import 'package:ia_card/pages/Product_selected_details.dart';
+import 'package:widget_mask/widget_mask.dart';
 
 class ProductTile extends StatelessWidget {
   final Product product;
@@ -15,7 +16,11 @@ class ProductTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: ListTile(
-        leading: image,
+        leading: WidgetMask(
+            blendMode: BlendMode.srcATop,
+            childSaveLayer: true,
+            mask: image,
+            child: Image.asset('assets/images/mask.png', width: 100)),
         title: Text(
           product.name,
           style: GoogleFonts.metrophobic(
