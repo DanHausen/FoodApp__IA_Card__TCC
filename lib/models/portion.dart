@@ -9,11 +9,11 @@ class Portion {
   final String value;
 
   const Portion({
-    @required this.name,
-    this.filtros,
-    @required this.id,
-    @required this.desc,
-    @required this.image,
-    @required this.value,
+    required this.name,
+    required this.filtros,
+    required this.id,
+    required this.desc,
+    required this.image,
+    required this.value,
   });
 }

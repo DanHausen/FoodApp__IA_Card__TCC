@@ -8,7 +8,7 @@ import 'package:ia_card/pages/Cart_listing_page.dart';
 import 'package:ia_card/widgets/Product_tile.dart';
 
 class CategoryListingPageClass extends StatefulWidget {
-  CategoryListingPageClass({this.name});
+  CategoryListingPageClass({required this.name});
   final String name;
 
   @override
@@ -55,7 +55,6 @@ class _CategoryListingPageClassState extends State<CategoryListingPageClass> {
     });
   }
 
-  SearchBar searchBar;
   AppBar buildAppBar(BuildContext context) {
     return new AppBar(
       toolbarHeight: 70,
@@ -90,6 +89,7 @@ class _CategoryListingPageClassState extends State<CategoryListingPageClass> {
     );
   }
 
+  late SearchBar searchBar;
   _CategoryListingPageClassState() {
     searchBar = new SearchBar(
         inBar: false,

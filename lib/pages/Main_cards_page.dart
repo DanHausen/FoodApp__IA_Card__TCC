@@ -13,7 +13,6 @@ class MainCardsPage extends StatefulWidget {
 }
 
 class _MainCardsPageState extends State<MainCardsPage> {
-  SearchBar searchBar;
   final searchController = TextEditingController();
 
   @override
@@ -43,6 +42,7 @@ class _MainCardsPageState extends State<MainCardsPage> {
     );
   }
 
+  late SearchBar searchBar;
   _MainCardsPageState() {
     searchBar = new SearchBar(
         inBar: false,

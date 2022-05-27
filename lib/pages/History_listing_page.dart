@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class HistoryListingPageClass extends StatefulWidget {
-  HistoryListingPageClass({this.name});
+  HistoryListingPageClass({required this.name});
   final String name;
 
   @override

@@ -9,7 +9,7 @@ int qtdeItems = 1;
 class ProductSelectedDetails extends StatelessWidget {
   final Product productModel;
   // ignore: non_constant_identifier_names
-  const ProductSelectedDetails({Key key, @required this.productModel})
+  const ProductSelectedDetails({key, required this.productModel})
       : super(key: key);
 
   @override
@@ -48,8 +48,8 @@ class ProductSelectedDetails extends StatelessWidget {
 
 class ProductPage extends StatefulWidget {
   const ProductPage({
-    Key key,
-    @required this.productModel,
+    key,
+    required this.productModel,
   }) : super(key: key);
 
   final Product productModel;
@@ -164,10 +164,12 @@ class _ProductPageState extends State<ProductPage> {
                 decoration: InputDecoration(
                   labelStyle: TextStyle(color: Colors.grey[700]),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey[700], width: 1.5),
+                    borderSide:
+                        BorderSide(color: (Colors.grey[700])!, width: 1.5),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey[700], width: 1.5),
+                    borderSide:
+                        BorderSide(color: (Colors.grey[700])!, width: 1.5),
                   ),
                   border: OutlineInputBorder(),
                   labelText: 'obs: ',

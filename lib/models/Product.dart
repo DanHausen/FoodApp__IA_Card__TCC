@@ -10,12 +10,12 @@ class Product {
   final key;
 
   const Product({
-    @required this.name,
-    this.filtros,
-    @required this.id,
-    @required this.description,
-    @required this.image,
-    @required this.price,
+    required this.name,
+    required this.filtros,
+    required this.id,
+    required this.description,
+    required this.image,
+    required this.price,
     this.key,
   });
 }

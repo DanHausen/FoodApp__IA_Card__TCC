@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:custom_splash/custom_splash.dart';
+import 'package:ia_card/pages/login.dart';
 import 'constants.dart';
 import 'models/Product.dart';
-import 'pages/Main_cards_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +13,7 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   final Future<FirebaseApp> app = Firebase.initializeApp();
 
-  static List<Product> cartList;
+  static late List<Product> cartList;
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +35,10 @@ class MyApp extends StatelessWidget {
           ),
           home: CustomSplash(
             imagePath: 'assets/images/logo.png',
-            backGroundColor: Colors.orange,
+            backGroundColor: Colors.white,
             animationEffect: 'zoom-in',
-            logoSize: 200,
-            home: MainCardsPage(),
+            logoSize: 300,
+            home: LoginScreen(), //Chamando a pagina inicial
             duration: 2500,
             type: CustomSplashType.StaticDuration,
           )),
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
           //hintText: "Guaraná",
           contentPadding: EdgeInsets.zero,
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey[300], width: 2.0),
+            borderSide: BorderSide(color: (Colors.grey[300])!, width: 2.0),
             borderRadius: BorderRadius.all(
               Radius.circular(20),
             ),
@@ -91,61 +91,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-/*
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-import 'package:custom_splash/custom_splash.dart';
-import 'constants.dart';
-import 'models/Product.dart';
-import 'pages/card_page.dart';
-
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  MyApp({Key key}) : super(key: key);
-
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
-  static List<Product> cartList;
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'IA Card',
-        theme: new ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          textTheme: TextTheme(
-            bodyText1: TextStyle(color: kTextColor),
-            bodyText2: TextStyle(color: kTextColor),
-          ),
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: FutureBuilder(
-          future: _initialization,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              return CustomSplash(
-                imagePath: 'assets/images/logo.png',
-                backGroundColor: Colors.orange,
-                animationEffect: 'zoom-in',
-                logoSize: 200,
-                home: CardPage(),
-                duration: 2500,
-                type: CustomSplashType.StaticDuration,
-              );
-            } else {
-              return Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              );
-            }
-          },
-        ));
-  }
-}
-*/
