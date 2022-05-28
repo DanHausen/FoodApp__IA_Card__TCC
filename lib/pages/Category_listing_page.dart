@@ -2,13 +2,14 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ia_card/constants.dart';
 import 'package:ia_card/main.dart';
 import 'package:ia_card/models/Product.dart';
 import 'package:ia_card/pages/Cart_listing_page.dart';
 import 'package:ia_card/widgets/Product_tile.dart';
 
 class CategoryListingPageClass extends StatefulWidget {
-  CategoryListingPageClass({this.name});
+  CategoryListingPageClass({required this.name});
   final String name;
 
   @override
@@ -55,7 +56,6 @@ class _CategoryListingPageClassState extends State<CategoryListingPageClass> {
     });
   }
 
-  SearchBar searchBar;
   AppBar buildAppBar(BuildContext context) {
     return new AppBar(
       toolbarHeight: 70,
@@ -86,10 +86,11 @@ class _CategoryListingPageClassState extends State<CategoryListingPageClass> {
         style:
             GoogleFonts.passionOne(fontStyle: FontStyle.normal, fontSize: 40),
       ),
-      backgroundColor: Color.fromRGBO(255, 161, 73, 1),
+      backgroundColor: kPrimaryLightColor,
     );
   }
 
+  late SearchBar searchBar;
   _CategoryListingPageClassState() {
     searchBar = new SearchBar(
         inBar: false,
@@ -115,7 +116,7 @@ class _CategoryListingPageClassState extends State<CategoryListingPageClass> {
           } else {
             return Center(
               child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.orange),
+                valueColor: AlwaysStoppedAnimation<Color>(kPrimaryColor),
               ),
             );
           }

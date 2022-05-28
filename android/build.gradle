@@ -2,19 +2,32 @@ buildscript {
     ext.kotlin_version = '1.6.21'
     repositories {
         google()
+        mavenCentral()
         jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath 'com.android.tools.build:gradle:7.1.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.gms:google-services:4.3.10'
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            eachDependency {
+                // https://issuetracker.google.com/issues/109894262#comment9
+                if (requested.group == "org.jetbrains.trove4j" && requested.name == "trove4j" && requested.version == "20160824") {
+                    useTarget("org.jetbrains.intellij.deps:trove4j:1.0.20181211")
+                }
+            }
+        }
     }
 }
 
 allprojects {
     repositories {
         google()
+        mavenCentral()
         jcenter()
     }
 }

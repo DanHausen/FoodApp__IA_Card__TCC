@@ -4,24 +4,27 @@ description: Projeto TCC
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 environment:
-  sdk: ">=2.11.0"
+  sdk: ">=2.12.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  cloud_firestore: any
-  firebase_core: ^1.16.0
-  firebase_database: ^9.0.13
-  cupertino_icons: ^1.0.2
-  custom_splash: ^0.0.2
-  flutter_search_bar: ^2.1.0
-  flutter_launcher_icons: any
-  flutter_svg: any
+  cloud_firestore: ^3.1.17
+  firebase_core: ^1.17.1
+  firebase_database: ^9.0.15
+  cupertino_icons: ^1.0.4
+  flutter_native_splash: ^2.2.1
+  flutter_search_bar: ^3.0.0-dev.1
+  flutter_launcher_icons: ^0.9.2
+  flutter_svg: ^1.1.0
+  widget_mask: ^1.0.0+0
 
   flutter_test:
     sdk: flutter
-  google_fonts: ^2.1.0
-  fancy_shimmer_image: ^2.0.0+2
+  google_fonts: ^3.0.1
+  fancy_shimmer_image: ^2.0.2
+  firebase_auth: ^3.3.19
+  flutterfire_ui: ^0.4.1+2
 
 flutter_icons:
   android: "launcher_icon"
@@ -36,3 +39,7 @@ flutter:
       - "assets/images/categories/"
       - assets/images/
       - assets/Icons/
+
+flutter_native_splash: #flutter pub run flutter_native_splash:create
+  color: "#ffffff"
+  image: "assets/images/logo.png"

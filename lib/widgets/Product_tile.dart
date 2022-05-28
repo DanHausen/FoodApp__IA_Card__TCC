@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ia_card/constants.dart';
 import 'package:ia_card/models/Product.dart';
 import 'package:ia_card/pages/Product_selected_details.dart';
+import 'package:widget_mask/widget_mask.dart';
 
 class ProductTile extends StatelessWidget {
   final Product product;
@@ -15,11 +17,15 @@ class ProductTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: ListTile(
-        leading: image,
+        leading: WidgetMask(
+            blendMode: BlendMode.srcATop,
+            childSaveLayer: true,
+            mask: image,
+            child: Image.asset('assets/images/mask.png', width: 100)),
         title: Text(
           product.name,
           style: GoogleFonts.metrophobic(
-            color: Colors.grey[800],
+            color: kTextColorHard,
             fontStyle: FontStyle.normal,
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -36,7 +42,7 @@ class ProductTile extends StatelessWidget {
           "R\$ " + product.price.toString(),
           style: GoogleFonts.metrophobic(
             fontStyle: FontStyle.normal,
-            color: Colors.grey[800],
+            color: kTextColorHard,
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
