@@ -41,12 +41,9 @@ class Cart {
   static void deleteSelectedCartItem(int _key) {
     int amountSelected = cartList[_key]["Quantidade"];
     var priceSelected = cartList[_key]["Price"];
-    if (amountSelected == null) {
-      return;
-    } else {
-      cartAmount -= amountSelected;
-      totalPrice -= priceSelected;
-      cartList.remove(_key);
-    }
+
+    cartAmount -= amountSelected;
+    totalPrice -= priceSelected;
+    cartList.remove(_key);
   }
 }

@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 class Portion {
   final String name;
   final int id;

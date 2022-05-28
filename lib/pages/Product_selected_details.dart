@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ia_card/constants.dart';
 import 'package:ia_card/models/Product.dart';
 import 'package:ia_card/widgets/Cart.dart';
 import 'package:ia_card/pages/Cart_listing_page.dart';
@@ -24,7 +25,7 @@ class ProductSelectedDetails extends StatelessWidget {
             bottom: Radius.circular(25),
           ),
         ),
-        backgroundColor: Color.fromRGBO(255, 161, 73, 1),
+        backgroundColor: kPrimaryLightColor,
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.only(right: 30.0),
@@ -125,14 +126,14 @@ class _ProductPageState extends State<ProductPage> {
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.orange,
+                  color: kPrimaryColor,
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
               ),
             ),
           ),
           new Container(
-            decoration: new BoxDecoration(color: Colors.grey[90]),
+            decoration: new BoxDecoration(color: kTextColorExtraLight),
             padding: const EdgeInsets.only(left: 40, top: 10),
             alignment: Alignment.topLeft,
             child: Text(
@@ -140,12 +141,12 @@ class _ProductPageState extends State<ProductPage> {
               style: GoogleFonts.metrophobic(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
-                color: Colors.grey[700],
+                color: kTextColorHard,
               ),
             ),
           ),
           new Container(
-            decoration: new BoxDecoration(color: Colors.grey[90]),
+            decoration: new BoxDecoration(color: kTextColorExtraLight),
             padding: const EdgeInsets.only(left: 40, bottom: 10),
             alignment: Alignment.topLeft,
             child: Text(
@@ -153,7 +154,7 @@ class _ProductPageState extends State<ProductPage> {
               style: GoogleFonts.metrophobic(
                 fontWeight: FontWeight.normal,
                 fontSize: 13,
-                color: Colors.grey[700],
+                color: kTextColorHard,
               ),
             ),
           ),
@@ -162,14 +163,12 @@ class _ProductPageState extends State<ProductPage> {
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: TextField(
                 decoration: InputDecoration(
-                  labelStyle: TextStyle(color: Colors.grey[700]),
+                  labelStyle: TextStyle(color: kTextColorHard),
                   focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: (Colors.grey[700])!, width: 1.5),
+                    borderSide: BorderSide(color: kTextColorHard, width: 1.5),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: (Colors.grey[700])!, width: 1.5),
+                    borderSide: BorderSide(color: kTextColorHard, width: 1.5),
                   ),
                   border: OutlineInputBorder(),
                   labelText: 'obs: ',
@@ -192,7 +191,7 @@ class _ProductPageState extends State<ProductPage> {
                         height: 50,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
-                            color: Colors.grey[100]),
+                            color: kTextColorExtraLight),
                         child: InkWell(
                             onTap: () {
                               //Adicionei o setState para atualizar o valor
@@ -204,7 +203,7 @@ class _ProductPageState extends State<ProductPage> {
                             },
                             child: Icon(
                               Icons.remove,
-                              color: Colors.grey[900],
+                              color: kTextColorExtraHard,
                               size: 25,
                             )),
                       ),
@@ -214,7 +213,7 @@ class _ProductPageState extends State<ProductPage> {
                         height: 50,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
-                            color: Color.fromRGBO(255, 161, 73, 1)),
+                            color: kPrimaryLightColor),
                         child: Align(
                           child: Text(
                             qtdeItems.toString(),
@@ -230,7 +229,7 @@ class _ProductPageState extends State<ProductPage> {
                         height: 50,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
-                            color: Colors.grey[100]),
+                            color: kTextColorExtraLight),
                         child: InkWell(
                           onTap: () {
                             setState(() {
@@ -239,7 +238,7 @@ class _ProductPageState extends State<ProductPage> {
                           },
                           child: Icon(
                             Icons.add,
-                            color: Colors.grey[900],
+                            color: kTextColorExtraHard,
                             size: 25,
                           ),
                         ),
@@ -255,7 +254,7 @@ class _ProductPageState extends State<ProductPage> {
                     child: InkWell(
                       child: TextButton(
                         style: TextButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(255, 161, 73, 1),
+                          backgroundColor: kPrimaryLightColor,
                         ),
                         child: Text(
                           'ADICIONAR',

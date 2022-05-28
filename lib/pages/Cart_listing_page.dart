@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ia_card/constants.dart';
 import 'package:ia_card/widgets/Cart.dart';
 
 class CartListingPage extends StatefulWidget {
@@ -30,7 +31,7 @@ class _CartListingPageState extends State<CartListingPage> {
             ),
           ],
         ),
-        backgroundColor: Color.fromRGBO(255, 161, 73, 1),
+        backgroundColor: kPrimaryLightColor,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(25),
@@ -43,7 +44,7 @@ class _CartListingPageState extends State<CartListingPage> {
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Text(
               "$cartAmount items",
-              style: TextStyle(color: Colors.grey[500]),
+              style: TextStyle(color: kTextColorHard),
             ),
           ),
           Expanded(
@@ -71,7 +72,7 @@ class _CartListingPageState extends State<CartListingPage> {
         child: Text(
           'R\$ ' + "$cartTotalPrice",
           style: TextStyle(
-            color: Colors.grey[600],
+            color: kTextColorMedium,
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
@@ -90,7 +91,7 @@ class _CartListingPageState extends State<CartListingPage> {
         alignment: Alignment.bottomCenter,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: Color.fromRGBO(255, 161, 73, 1),
+            primary: kPrimaryLightColor,
             elevation: 0.0,
           ),
           onPressed: () {},
@@ -117,7 +118,7 @@ class _CartListingPageState extends State<CartListingPage> {
       decoration: BoxDecoration(
         border: Border(
           left: BorderSide(
-            color: Color.fromRGBO(255, 161, 73, 1),
+            color: kPrimaryLightColor,
             width: 4,
           ),
         ),
@@ -145,7 +146,7 @@ class _CartListingPageState extends State<CartListingPage> {
                       child: Icon(
                         Icons.delete,
                         size: 25,
-                        color: Color.fromRGBO(255, 161, 73, 1),
+                        color: kPrimaryLightColor,
                       ),
                       onPressed: () {
                         Cart.deleteSelectedCartItem(

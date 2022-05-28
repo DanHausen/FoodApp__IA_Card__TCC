@@ -17,23 +17,26 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
-        return windows;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -46,17 +49,6 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCrqtVHp7rIjKfFQWW9pH375r1X7qFFX6U',
-    appId: '1:1059153884506:web:d7e6a0e52e7dd69d8b2f63',
-    messagingSenderId: '1059153884506',
-    projectId: 'foodapp-card',
-    authDomain: 'foodapp-card.firebaseapp.com',
-    databaseURL: 'https://foodapp-card-default-rtdb.firebaseio.com',
-    storageBucket: 'foodapp-card.appspot.com',
-    measurementId: 'G-4YD4BGDD64',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDIEBhf5cnAV_-9Zy4aMWx1o0R-OgI006o',
     appId: '1:1059153884506:android:71142a0a45ced5998b2f63',
@@ -66,14 +58,14 @@ class DefaultFirebaseOptions {
     storageBucket: 'foodapp-card.appspot.com',
   );
 
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCrqtVHp7rIjKfFQWW9pH375r1X7qFFX6U',
-    appId: '1:1059153884506:web:d6a723fcdbcc95e98b2f63',
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyCDouFro3OuKbhbDo-Nvb9txI9QsGcue0I',
+    appId: '1:1059153884506:ios:c085527afeaa5bf08b2f63',
     messagingSenderId: '1059153884506',
     projectId: 'foodapp-card',
-    authDomain: 'foodapp-card.firebaseapp.com',
     databaseURL: 'https://foodapp-card-default-rtdb.firebaseio.com',
     storageBucket: 'foodapp-card.appspot.com',
-    measurementId: 'G-WL0QD121S5',
+    iosClientId: '1059153884506-lmau1cslma8r41h2fda859sf0f145doi.apps.googleusercontent.com',
+    iosBundleId: 'com.example.iaCard',
   );
 }

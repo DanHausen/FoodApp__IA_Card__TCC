@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
+import 'package:ia_card/constants.dart';
 import 'package:ia_card/pages/Category_listing_page.dart';
 import 'package:ia_card/pages/Cart_listing_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ia_card/pages/User_page.dart';
 
 import '../main.dart';
 import 'History_listing_page.dart';
 
 class MainCardsPage extends StatefulWidget {
+  const MainCardsPage({Key? key, required var this.user}) : super(key: key);
+  final User user;
+
   @override
   _MainCardsPageState createState() => _MainCardsPageState();
 }
@@ -23,6 +29,15 @@ class _MainCardsPageState extends State<MainCardsPage> {
     });
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: searchBar.build(context),
+      body: _buildBody(),
+    );
+  }
+
   AppBar buildAppBar(BuildContext context) {
     return new AppBar(
       toolbarHeight: 70,
@@ -33,7 +48,23 @@ class _MainCardsPageState extends State<MainCardsPage> {
         style: GoogleFonts.passionOne(
             fontStyle: FontStyle.normal, fontSize: 40, color: Colors.white),
       ),
-      backgroundColor: Color.fromRGBO(255, 161, 73, 1),
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(right: 25.0),
+          child: new IconButton(
+            icon: new Icon(Icons.person),
+            iconSize: 30,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => UserPageSettings(user: widget.user)),
+              );
+            },
+          ),
+        ),
+      ],
+      backgroundColor: kPrimaryLightColor,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           bottom: Radius.circular(25),
@@ -49,15 +80,6 @@ class _MainCardsPageState extends State<MainCardsPage> {
         setState: setState,
         onSubmitted: print,
         buildDefaultAppBar: buildAppBar);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: searchBar.build(context),
-      body: _buildBody(),
-    );
   }
 
   _buildBody() {
@@ -81,7 +103,7 @@ class _MainCardsPageState extends State<MainCardsPage> {
       child: Container(
         width: 225,
         decoration: new BoxDecoration(
-          color: Color.fromRGBO(255, 161, 73, 1),
+          color: kPrimaryLightColor,
           borderRadius: new BorderRadius.only(
             bottomRight: const Radius.circular(25),
             topRight: const Radius.circular(25),
@@ -126,7 +148,7 @@ class _MainCardsPageState extends State<MainCardsPage> {
             child: Icon(
               Icons.shopping_cart,
               size: 35,
-              color: Color.fromRGBO(255, 161, 73, 1),
+              color: kPrimaryLightColor,
             ),
           ),
         ],
@@ -140,7 +162,7 @@ class _MainCardsPageState extends State<MainCardsPage> {
       height: 41,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: Color.fromRGBO(255, 161, 73, 1),
+          primary: kPrimaryLightColor,
           shape: new RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(15.0),
           ),
@@ -229,7 +251,7 @@ class _MainCardsPageState extends State<MainCardsPage> {
                 child: Text(
                   categoryName,
                   style: GoogleFonts.acme(
-                    color: Colors.grey[700],
+                    color: kTextColorHard,
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.w300,
                     fontSize: 18.0,
