@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
 import 'package:ia_card/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutterfire_ui/auth.dart';
 
 class UserPageSettings extends StatelessWidget {
   const UserPageSettings({Key? key, required this.user}) : super(key: key);
@@ -13,6 +12,9 @@ class UserPageSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 70,
+        elevation: 1,
+        centerTitle: true,
         backgroundColor: kPrimaryLightColor,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(

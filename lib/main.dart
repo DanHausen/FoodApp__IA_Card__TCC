@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:ia_card/firebase_options.dart';
-import 'package:ia_card/pages/signin_signup_page.dart';
+import 'package:ia_card/pages/Signin_signup_page.dart';
 import 'constants.dart';
 import 'models/Product.dart';
 
