@@ -1,15 +1,28 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ia_card/constants.dart';
-import 'package:ia_card/widgets/login.dart';
+import 'package:ia_card/pages/signup.dart';
+import 'package:ia_card/widgets/auth_gate.dart';
 
-class SignupPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
-  bool isSwitched = false;
+class _LoginPageState extends State<LoginPage> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  var authHandler = new AuthGate();
+  final user = FirebaseAuth.instance.currentUser;
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +49,7 @@ class _SignupPageState extends State<SignupPage> {
           ),
         ),
         title: new Text(
-          'Sign Up',
+          'Login',
           style: GoogleFonts.passionOne(
               fontStyle: FontStyle.normal, fontSize: 40, color: Colors.white),
         ),
@@ -44,43 +57,23 @@ class _SignupPageState extends State<SignupPage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.height -
+                70 -
+                MediaQuery.of(context).padding.top,
             width: double.infinity,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "Create an Account, Its free",
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.grey[700],
-                  ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 40),
                   child: Column(
                     children: [
-                      makeInput(label: "Email"),
-                      makeInput(label: "Password", obsureText: true),
-                      makeInput(label: "Confirm Pasword", obsureText: true),
-                      Row(
-                        children: [
-                          Switch(
-                            value: isSwitched,
-                            onChanged: (value) {
-                              setState(() {
-                                isSwitched = value;
-                              });
-                            },
-                            activeTrackColor: kPrimaryColor,
-                            activeColor: kPrimaryLightColor,
-                          ),
-                        ],
-                      ),
+                      makeInput(label: "Email", ctrl: emailController),
+                      makeInput(
+                          label: "Password",
+                          obsureText: true,
+                          ctrl: passwordController),
                     ],
                   ),
                 ),
@@ -88,7 +81,12 @@ class _SignupPageState extends State<SignupPage> {
                   padding: EdgeInsets.symmetric(horizontal: 40),
                   child: ElevatedButton(
                     onPressed: () {
-                      //Sign up Functionality
+                      authHandler
+                          .handleSignInEmail(emailController.text.toLowerCase(),
+                              passwordController.text)
+                          .then((user) {
+                        authHandler.navigateRoute(context);
+                      }).catchError((e) => print(e));
                     },
                     style: ElevatedButton.styleFrom(
                       //alignment: Alignment.centerLeft,
@@ -100,7 +98,7 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                     ),
                     child: Text(
-                      ">  Sign Up  <",
+                      ">  Login  <",
                       style: GoogleFonts.acme(
                         color: Colors.white,
                         fontStyle: FontStyle.normal,
@@ -116,12 +114,12 @@ class _SignupPageState extends State<SignupPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Already have an account? "),
+                    Text("Dont have an account? "),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),
+                          MaterialPageRoute(builder: (context) => SignupPage()),
                         );
                       },
                       style: ElevatedButton.styleFrom(
@@ -130,7 +128,7 @@ class _SignupPageState extends State<SignupPage> {
                         elevation: 0.0,
                       ),
                       child: Text(
-                        "Login",
+                        "Sign Up",
                         style: GoogleFonts.acme(
                           color: kPrimaryLightColor,
                           fontStyle: FontStyle.normal,
@@ -150,7 +148,7 @@ class _SignupPageState extends State<SignupPage> {
   }
 }
 
-Widget makeInput({label, obsureText = false}) {
+Widget makeInput({label, obsureText = false, ctrl}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -165,6 +163,7 @@ Widget makeInput({label, obsureText = false}) {
         height: 5,
       ),
       TextField(
+        controller: ctrl,
         obscureText: obsureText,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),

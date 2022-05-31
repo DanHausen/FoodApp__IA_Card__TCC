@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ia_card/constants.dart';
-import 'package:ia_card/widgets/login.dart';
-import 'package:ia_card/widgets/signup.dart';
+import 'package:ia_card/pages/Client_home_page.dart';
+import 'package:ia_card/pages/login.dart';
+import 'package:ia_card/pages/signup.dart';
 
 class CustomSignInWidget extends StatelessWidget {
   const CustomSignInWidget({Key? key}) : super(key: key);
@@ -20,6 +22,11 @@ class CustomEmailSignInForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth.instance.userChanges().listen((User? user) {
+      if (user != null) {
+        HomePage(user: user);
+      }
+    });
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 70,

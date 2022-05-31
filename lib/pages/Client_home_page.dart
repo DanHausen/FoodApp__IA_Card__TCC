@@ -10,15 +10,15 @@ import 'package:ia_card/pages/User_page.dart';
 import '../main.dart';
 import 'History_listing_page.dart';
 
-class MainCardsPage extends StatefulWidget {
-  const MainCardsPage({Key? key, required var this.user}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key, required var this.user}) : super(key: key);
   final User user;
 
   @override
-  _MainCardsPageState createState() => _MainCardsPageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _MainCardsPageState extends State<MainCardsPage> {
+class _HomePageState extends State<HomePage> {
   final searchController = TextEditingController();
 
   @override
@@ -58,7 +58,8 @@ class _MainCardsPageState extends State<MainCardsPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => UserPageSettings(user: widget.user)),
+                    builder: (context) => UserPageSettings(
+                        user: FirebaseAuth.instance.currentUser!)),
               );
             },
           ),
@@ -74,7 +75,7 @@ class _MainCardsPageState extends State<MainCardsPage> {
   }
 
   late SearchBar searchBar;
-  _MainCardsPageState() {
+  _HomePageState() {
     searchBar = new SearchBar(
         inBar: false,
         setState: setState,
