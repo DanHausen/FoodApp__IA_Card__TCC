@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
 import 'package:ia_card/constants.dart';
-import 'package:ia_card/pages/Category_listing_page.dart';
-import 'package:ia_card/pages/Cart_listing_page.dart';
+import 'package:ia_card/pages/Customer/category_listing_page.dart';
+import 'package:ia_card/pages/Customer/cart_listing_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:ia_card/pages/User_page.dart';
+import 'package:ia_card/pages/user_profile_page.dart';
 
-import '../main.dart';
-import 'History_listing_page.dart';
+import '../../main.dart';
+import 'customer_purchase_history.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required var this.user}) : super(key: key);
@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ],
-      backgroundColor: kPrimaryLightColor,
+      backgroundColor: K_PRIMARY_COLOR_LIGHT,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           bottom: Radius.circular(25),
@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
       child: Container(
         width: 225,
         decoration: new BoxDecoration(
-          color: kPrimaryLightColor,
+          color: K_PRIMARY_COLOR_LIGHT,
           borderRadius: new BorderRadius.only(
             bottomRight: const Radius.circular(25),
             topRight: const Radius.circular(25),
@@ -149,7 +149,7 @@ class _HomePageState extends State<HomePage> {
             child: Icon(
               Icons.shopping_cart,
               size: 35,
-              color: kPrimaryLightColor,
+              color: K_PRIMARY_COLOR_LIGHT,
             ),
           ),
         ],
@@ -163,7 +163,7 @@ class _HomePageState extends State<HomePage> {
       height: 41,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: kPrimaryLightColor,
+          primary: K_PRIMARY_COLOR_LIGHT,
           shape: new RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(15.0),
           ),
@@ -252,7 +252,7 @@ class _HomePageState extends State<HomePage> {
                 child: Text(
                   categoryName,
                   style: GoogleFonts.acme(
-                    color: kTextColorHard,
+                    color: K_TEXT_COLOR_HARD,
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.w300,
                     fontSize: 18.0,

@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
         toolbarHeight: 70,
         elevation: 0,
         centerTitle: true,
-        backgroundColor: kPrimaryLightColor,
+        backgroundColor: K_PRIMARY_COLOR_LIGHT,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(25),
@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     style: ElevatedButton.styleFrom(
                       //alignment: Alignment.centerLeft,
-                      primary: kPrimaryLightColor,
+                      primary: K_PRIMARY_COLOR_LIGHT,
                       minimumSize: Size(double.infinity, 42),
                       elevation: 0.0,
                       shape: new RoundedRectangleBorder(
@@ -130,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Text(
                         "Sign Up",
                         style: GoogleFonts.acme(
-                          color: kPrimaryLightColor,
+                          color: K_PRIMARY_COLOR_LIGHT,
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.w300,
                           fontSize: 16.0,
@@ -157,7 +157,7 @@ Widget makeInput({label, obsureText = false, ctrl}) {
         style: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.w900,
-            color: kPrimaryLightColor),
+            color: K_PRIMARY_COLOR_LIGHT),
       ),
       SizedBox(
         height: 5,
@@ -169,11 +169,11 @@ Widget makeInput({label, obsureText = false, ctrl}) {
           contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: kTextColorMedium,
+              color: K_TEXT_COLOR_MEDIUM,
             ),
           ),
           border: OutlineInputBorder(
-              borderSide: BorderSide(color: kTextColorMedium)),
+              borderSide: BorderSide(color: K_TEXT_COLOR_MEDIUM)),
         ),
       ),
       SizedBox(

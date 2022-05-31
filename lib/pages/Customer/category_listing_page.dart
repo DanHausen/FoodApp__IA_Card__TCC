@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ia_card/constants.dart';
 import 'package:ia_card/main.dart';
 import 'package:ia_card/models/Product.dart';
-import 'package:ia_card/pages/Cart_listing_page.dart';
-import 'package:ia_card/widgets/Product_tile.dart';
+import 'package:ia_card/pages/Customer/cart_listing_page.dart';
+import 'package:ia_card/widgets/product_tile.dart';
 
 class CategoryListingPageClass extends StatefulWidget {
   CategoryListingPageClass({required this.name});
@@ -86,7 +86,7 @@ class _CategoryListingPageClassState extends State<CategoryListingPageClass> {
         style:
             GoogleFonts.passionOne(fontStyle: FontStyle.normal, fontSize: 40),
       ),
-      backgroundColor: kPrimaryLightColor,
+      backgroundColor: K_PRIMARY_COLOR_LIGHT,
     );
   }
 
@@ -116,7 +116,7 @@ class _CategoryListingPageClassState extends State<CategoryListingPageClass> {
           } else {
             return Center(
               child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(kPrimaryColor),
+                valueColor: AlwaysStoppedAnimation<Color>(K_PRIMARY_COLOR),
               ),
             );
           }

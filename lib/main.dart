@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:ia_card/firebase_options.dart';
-import 'package:ia_card/pages/Sign_page.dart';
+import 'package:ia_card/pages/initial_sign_redirect_page.dart';
 import 'constants.dart';
 import 'models/Product.dart';
 
@@ -30,8 +30,8 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
           backgroundColor: Colors.white,
           textTheme: TextTheme(
-            bodyText1: TextStyle(color: kTextColorMedium),
-            bodyText2: TextStyle(color: kTextColorMedium),
+            bodyText1: TextStyle(color: K_TEXT_COLOR_MEDIUM),
+            bodyText2: TextStyle(color: K_TEXT_COLOR_MEDIUM),
           ),
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
@@ -56,13 +56,13 @@ class MyApp extends StatelessWidget {
           //hintText: "Guaraná",
           contentPadding: EdgeInsets.zero,
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: kTextColorLight, width: 2.0),
+            borderSide: BorderSide(color: K_TEXT_COLOR_LIGHT, width: 2.0),
             borderRadius: BorderRadius.all(
               Radius.circular(20),
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: kPrimaryLightColor, width: 2.0),
+            borderSide: BorderSide(color: K_PRIMARY_COLOR_LIGHT, width: 2.0),
             borderRadius: BorderRadius.all(
               Radius.circular(20),
             ),
@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
           prefixIcon: Icon(
             Icons.search,
             size: 35,
-            color: kPrimaryLightColor,
+            color: K_PRIMARY_COLOR_LIGHT,
           ),
           suffixIcon: _searchController.text.isEmpty
               ? Container(

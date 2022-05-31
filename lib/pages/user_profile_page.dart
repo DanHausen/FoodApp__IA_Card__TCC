@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ia_card/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:ia_card/pages/Sign_page.dart';
+import 'package:ia_card/pages/initial_sign_redirect_page.dart';
 
 class UserPageSettings extends StatelessWidget {
   const UserPageSettings({Key? key, required this.user}) : super(key: key);
@@ -15,7 +15,7 @@ class UserPageSettings extends StatelessWidget {
         toolbarHeight: 70,
         elevation: 1,
         centerTitle: true,
-        backgroundColor: kPrimaryLightColor,
+        backgroundColor: K_PRIMARY_COLOR_LIGHT,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(25),

@@ -11,7 +11,7 @@ class ChipCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     return Chip(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
-      backgroundColor: kPrimaryLightColor.withOpacity(0.5),
+      backgroundColor: K_PRIMARY_COLOR_LIGHT.withOpacity(0.5),
       label: Container(
         width: 120,
         height: 40,

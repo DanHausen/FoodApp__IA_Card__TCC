@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-Color kPrimaryColor = Colors.orange;
-Color kPrimaryLightColor = Color.fromRGBO(255, 161, 73, 1);
-Color kBackColor = Colors.white;
-Color kTextColorExtraHard = Colors.grey.shade900;
-Color kTextColorHard = Colors.grey.shade700;
-Color kTextColorMedium = Colors.grey.shade500;
-Color kTextColorLight = Colors.grey.shade300;
-Color kTextColorExtraLight = Colors.grey.shade100;
+const K_PRIMARY_COLOR = Colors.orange;
+const K_PRIMARY_COLOR_LIGHT = Color.fromRGBO(255, 161, 73, 1);
+const K_BACKGROUND_COLOR = Colors.white;
+final K_TEXT_COLOR_EXTRA_HARD = Colors.grey.shade900;
+final K_TEXT_COLOR_HARD = Colors.grey.shade700;
+final K_TEXT_COLOR_MEDIUM = Colors.grey.shade500;
+final K_TEXT_COLOR_LIGHT = Colors.grey.shade300;
+final K_TEXT_COLOR_EXTRA_LIGHT = Colors.grey.shade100;
 
 Duration kAnimationDuration = Duration(milliseconds: 200);

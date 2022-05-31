@@ -41,7 +41,7 @@ class _SignupPageState extends State<SignupPage> {
             icon: Icon(
               Icons.arrow_back,
               size: 20,
-              color: kPrimaryLightColor,
+              color: K_PRIMARY_COLOR_LIGHT,
             )),
         toolbarHeight: 70,
         elevation: 0,
@@ -57,7 +57,7 @@ class _SignupPageState extends State<SignupPage> {
           style: GoogleFonts.passionOne(
               fontStyle: FontStyle.normal,
               fontSize: 40,
-              color: kPrimaryLightColor),
+              color: K_PRIMARY_COLOR_LIGHT),
         ),
       ),
       body: Container(
@@ -116,11 +116,11 @@ class _SignupPageState extends State<SignupPage> {
                     minVerticalPadding: 0,
                     title: Text(
                       "Costumer",
-                      style: TextStyle(color: kTextColorHard),
+                      style: TextStyle(color: K_TEXT_COLOR_HARD),
                     ),
                     leading: Radio<FormType>(
                       fillColor: MaterialStateColor.resolveWith(
-                          (states) => kPrimaryLightColor),
+                          (states) => K_PRIMARY_COLOR_LIGHT),
                       value: FormType.costumer,
                       groupValue: formType,
                       onChanged: (FormType? value) {
@@ -136,11 +136,11 @@ class _SignupPageState extends State<SignupPage> {
                     minVerticalPadding: 0,
                     title: Text(
                       "Restaurant",
-                      style: TextStyle(color: kTextColorHard),
+                      style: TextStyle(color: K_TEXT_COLOR_HARD),
                     ),
                     leading: Radio<FormType>(
                       fillColor: MaterialStateColor.resolveWith(
-                          (states) => kPrimaryLightColor),
+                          (states) => K_PRIMARY_COLOR_LIGHT),
                       value: FormType.restaurant,
                       groupValue: formType,
                       onChanged: (FormType? value) {
@@ -168,7 +168,7 @@ class _SignupPageState extends State<SignupPage> {
                 },
                 style: ElevatedButton.styleFrom(
                   //alignment: Alignment.centerLeft,
-                  primary: kPrimaryLightColor,
+                  primary: K_PRIMARY_COLOR_LIGHT,
                   minimumSize: Size(double.infinity, 42),
                   elevation: 0.0,
                   shape: new RoundedRectangleBorder(
@@ -205,7 +205,7 @@ class _SignupPageState extends State<SignupPage> {
                   child: Text(
                     "Login",
                     style: GoogleFonts.acme(
-                      color: kPrimaryLightColor,
+                      color: K_PRIMARY_COLOR_LIGHT,
                       fontStyle: FontStyle.normal,
                       fontWeight: FontWeight.w300,
                       fontSize: 16.0,
@@ -229,7 +229,7 @@ class _SignupPageState extends State<SignupPage> {
           style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w900,
-              color: kPrimaryLightColor),
+              color: K_PRIMARY_COLOR_LIGHT),
         ),
         SizedBox(
           height: 5,
@@ -241,11 +241,11 @@ class _SignupPageState extends State<SignupPage> {
             contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: kTextColorMedium,
+                color: K_TEXT_COLOR_MEDIUM,
               ),
             ),
             border: OutlineInputBorder(
-                borderSide: BorderSide(color: kTextColorMedium)),
+                borderSide: BorderSide(color: K_TEXT_COLOR_MEDIUM)),
           ),
         ),
       ],

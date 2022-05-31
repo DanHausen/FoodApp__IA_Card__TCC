@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ia_card/constants.dart';
-import 'package:ia_card/widgets/Cart.dart';
+import 'package:ia_card/widgets/cart.dart';
 
 class CartListingPage extends StatefulWidget {
   static String routeName = "/cart";
@@ -31,7 +31,7 @@ class _CartListingPageState extends State<CartListingPage> {
             ),
           ],
         ),
-        backgroundColor: kPrimaryLightColor,
+        backgroundColor: K_PRIMARY_COLOR_LIGHT,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(25),
@@ -44,7 +44,7 @@ class _CartListingPageState extends State<CartListingPage> {
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Text(
               "$cartAmount items",
-              style: TextStyle(color: kTextColorHard),
+              style: TextStyle(color: K_TEXT_COLOR_HARD),
             ),
           ),
           Expanded(
@@ -72,7 +72,7 @@ class _CartListingPageState extends State<CartListingPage> {
         child: Text(
           'R\$ ' + "$cartTotalPrice",
           style: TextStyle(
-            color: kTextColorMedium,
+            color: K_TEXT_COLOR_MEDIUM,
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
@@ -91,7 +91,7 @@ class _CartListingPageState extends State<CartListingPage> {
         alignment: Alignment.bottomCenter,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: kPrimaryLightColor,
+            primary: K_PRIMARY_COLOR_LIGHT,
             elevation: 0.0,
           ),
           onPressed: () {},
@@ -118,7 +118,7 @@ class _CartListingPageState extends State<CartListingPage> {
       decoration: BoxDecoration(
         border: Border(
           left: BorderSide(
-            color: kPrimaryLightColor,
+            color: K_PRIMARY_COLOR_LIGHT,
             width: 4,
           ),
         ),
@@ -146,7 +146,7 @@ class _CartListingPageState extends State<CartListingPage> {
                       child: Icon(
                         Icons.delete,
                         size: 25,
-                        color: kPrimaryLightColor,
+                        color: K_PRIMARY_COLOR_LIGHT,
                       ),
                       onPressed: () {
                         Cart.deleteSelectedCartItem(

@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ia_card/constants.dart';
-import 'package:ia_card/pages/Client_home_page.dart';
+import 'package:ia_card/pages/Customer/client_home_page.dart';
 import 'package:ia_card/pages/login.dart';
 import 'package:ia_card/pages/signup.dart';
 
@@ -32,7 +32,7 @@ class CustomEmailSignInForm extends StatelessWidget {
         toolbarHeight: 70,
         elevation: 1,
         centerTitle: true,
-        backgroundColor: kPrimaryLightColor,
+        backgroundColor: K_PRIMARY_COLOR_LIGHT,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(25),
@@ -74,7 +74,7 @@ class Body extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                 //alignment: Alignment.centerLeft,
-                primary: kPrimaryLightColor,
+                primary: K_PRIMARY_COLOR_LIGHT,
                 minimumSize: Size(double.infinity, 42),
                 elevation: 0.0,
                 shape: new RoundedRectangleBorder(
@@ -110,7 +110,7 @@ class Body extends StatelessWidget {
               child: Text(
                 "Sign Up",
                 style: GoogleFonts.acme(
-                  color: kPrimaryLightColor,
+                  color: K_PRIMARY_COLOR_LIGHT,
                   fontStyle: FontStyle.normal,
                   fontWeight: FontWeight.w300,
                   fontSize: 16.0,

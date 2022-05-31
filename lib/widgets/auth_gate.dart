@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:ia_card/pages/Client_home_page.dart';
-import 'package:ia_card/pages/Restaurant_home_page.dart';
+import 'package:ia_card/pages/Customer/client_home_page.dart';
+import 'package:ia_card/pages/Restaurant/Restaurant_home_page.dart';
 import 'package:ia_card/pages/signup.dart';
-import 'package:ia_card/widgets/CustomSignInWidget.dart';
+import 'package:ia_card/widgets/custom_sign_in_widget.dart';
 
 class AuthGate extends StatelessWidget {
   AuthGate({Key? key}) : super(key: key);

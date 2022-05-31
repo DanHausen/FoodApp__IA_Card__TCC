@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ia_card/constants.dart';
-import 'package:ia_card/pages/User_page.dart';
+import 'package:ia_card/pages/user_profile_page.dart';
 
 class RestaurantHomePage extends StatelessWidget {
   const RestaurantHomePage({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class RestaurantHomePage extends StatelessWidget {
             style: GoogleFonts.passionOne(
                 fontStyle: FontStyle.normal,
                 fontSize: 40,
-                color: kPrimaryLightColor),
+                color: K_PRIMARY_COLOR_LIGHT),
           ),
         ),
         body: ElevatedButton(

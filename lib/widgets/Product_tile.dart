@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ia_card/constants.dart';
 import 'package:ia_card/models/Product.dart';
-import 'package:ia_card/pages/Product_selected_details.dart';
+import 'package:ia_card/pages/Customer/product_selected_details.dart';
 import 'package:widget_mask/widget_mask.dart';
 
 class ProductTile extends StatelessWidget {
@@ -25,7 +25,7 @@ class ProductTile extends StatelessWidget {
         title: Text(
           product.name,
           style: GoogleFonts.metrophobic(
-            color: kTextColorHard,
+            color: K_TEXT_COLOR_HARD,
             fontStyle: FontStyle.normal,
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -42,7 +42,7 @@ class ProductTile extends StatelessWidget {
           "R\$ " + product.price.toString(),
           style: GoogleFonts.metrophobic(
             fontStyle: FontStyle.normal,
-            color: kTextColorHard,
+            color: K_TEXT_COLOR_HARD,
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),

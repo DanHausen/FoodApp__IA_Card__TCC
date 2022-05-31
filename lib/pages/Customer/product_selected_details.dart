@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ia_card/constants.dart';
 import 'package:ia_card/models/Product.dart';
-import 'package:ia_card/widgets/Cart.dart';
-import 'package:ia_card/pages/Cart_listing_page.dart';
+import 'package:ia_card/widgets/cart.dart';
+import 'package:ia_card/pages/Customer/cart_listing_page.dart';
 
 int qtdeItems = 1;
 
@@ -25,7 +25,7 @@ class ProductSelectedDetails extends StatelessWidget {
             bottom: Radius.circular(25),
           ),
         ),
-        backgroundColor: kPrimaryLightColor,
+        backgroundColor: K_PRIMARY_COLOR_LIGHT,
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.only(right: 30.0),
@@ -126,14 +126,14 @@ class _ProductPageState extends State<ProductPage> {
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: kPrimaryColor,
+                  color: K_PRIMARY_COLOR,
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
               ),
             ),
           ),
           new Container(
-            decoration: new BoxDecoration(color: kTextColorExtraLight),
+            decoration: new BoxDecoration(color: K_TEXT_COLOR_EXTRA_LIGHT),
             padding: const EdgeInsets.only(left: 40, top: 10),
             alignment: Alignment.topLeft,
             child: Text(
@@ -141,12 +141,12 @@ class _ProductPageState extends State<ProductPage> {
               style: GoogleFonts.metrophobic(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
-                color: kTextColorHard,
+                color: K_TEXT_COLOR_HARD,
               ),
             ),
           ),
           new Container(
-            decoration: new BoxDecoration(color: kTextColorExtraLight),
+            decoration: new BoxDecoration(color: K_TEXT_COLOR_EXTRA_LIGHT),
             padding: const EdgeInsets.only(left: 40, bottom: 10),
             alignment: Alignment.topLeft,
             child: Text(
@@ -154,7 +154,7 @@ class _ProductPageState extends State<ProductPage> {
               style: GoogleFonts.metrophobic(
                 fontWeight: FontWeight.normal,
                 fontSize: 13,
-                color: kTextColorHard,
+                color: K_TEXT_COLOR_HARD,
               ),
             ),
           ),
@@ -163,12 +163,14 @@ class _ProductPageState extends State<ProductPage> {
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: TextField(
                 decoration: InputDecoration(
-                  labelStyle: TextStyle(color: kTextColorHard),
+                  labelStyle: TextStyle(color: K_TEXT_COLOR_HARD),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: kTextColorHard, width: 1.5),
+                    borderSide:
+                        BorderSide(color: K_TEXT_COLOR_HARD, width: 1.5),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: kTextColorHard, width: 1.5),
+                    borderSide:
+                        BorderSide(color: K_TEXT_COLOR_HARD, width: 1.5),
                   ),
                   border: OutlineInputBorder(),
                   labelText: 'obs: ',
@@ -191,7 +193,7 @@ class _ProductPageState extends State<ProductPage> {
                         height: 50,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
-                            color: kTextColorExtraLight),
+                            color: K_TEXT_COLOR_EXTRA_LIGHT),
                         child: InkWell(
                             onTap: () {
                               //Adicionei o setState para atualizar o valor
@@ -203,7 +205,7 @@ class _ProductPageState extends State<ProductPage> {
                             },
                             child: Icon(
                               Icons.remove,
-                              color: kTextColorExtraHard,
+                              color: K_TEXT_COLOR_EXTRA_HARD,
                               size: 25,
                             )),
                       ),
@@ -213,7 +215,7 @@ class _ProductPageState extends State<ProductPage> {
                         height: 50,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
-                            color: kPrimaryLightColor),
+                            color: K_PRIMARY_COLOR_LIGHT),
                         child: Align(
                           child: Text(
                             qtdeItems.toString(),
@@ -229,7 +231,7 @@ class _ProductPageState extends State<ProductPage> {
                         height: 50,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
-                            color: kTextColorExtraLight),
+                            color: K_TEXT_COLOR_EXTRA_LIGHT),
                         child: InkWell(
                           onTap: () {
                             setState(() {
@@ -238,7 +240,7 @@ class _ProductPageState extends State<ProductPage> {
                           },
                           child: Icon(
                             Icons.add,
-                            color: kTextColorExtraHard,
+                            color: K_TEXT_COLOR_EXTRA_HARD,
                             size: 25,
                           ),
                         ),
@@ -254,7 +256,7 @@ class _ProductPageState extends State<ProductPage> {
                     child: InkWell(
                       child: TextButton(
                         style: TextButton.styleFrom(
-                          backgroundColor: kPrimaryLightColor,
+                          backgroundColor: K_PRIMARY_COLOR_LIGHT,
                         ),
                         child: Text(
                           'ADICIONAR',
