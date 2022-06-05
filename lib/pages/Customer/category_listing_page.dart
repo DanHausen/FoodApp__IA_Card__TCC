@@ -1,11 +1,10 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_search_bar/flutter_search_bar.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:ia_card/constants.dart';
 import 'package:ia_card/main.dart';
 import 'package:ia_card/models/Product.dart';
 import 'package:ia_card/pages/Customer/cart_listing_page.dart';
+import 'package:ia_card/widgets/appBar.dart';
 import 'package:ia_card/widgets/product_tile.dart';
 
 class CategoryListingPageClass extends StatefulWidget {
@@ -56,49 +55,6 @@ class _CategoryListingPageClassState extends State<CategoryListingPageClass> {
     });
   }
 
-  AppBar buildAppBar(BuildContext context) {
-    return new AppBar(
-      toolbarHeight: 70,
-      elevation: 1,
-      centerTitle: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(25),
-        ),
-      ),
-      actions: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(right: 30.0),
-          child: IconButton(
-            icon: Icon(Icons.shopping_cart, size: 35),
-            color: Colors.white,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => CartListingPage()),
-              );
-            },
-          ),
-        )
-      ],
-      title: new Text(
-        widget.name,
-        style:
-            GoogleFonts.passionOne(fontStyle: FontStyle.normal, fontSize: 40),
-      ),
-      backgroundColor: K_PRIMARY_COLOR_LIGHT,
-    );
-  }
-
-  late SearchBar searchBar;
-  _CategoryListingPageClassState() {
-    searchBar = new SearchBar(
-        inBar: false,
-        setState: setState,
-        onSubmitted: print,
-        buildDefaultAppBar: buildAppBar);
-  }
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -110,7 +66,9 @@ class _CategoryListingPageClassState extends State<CategoryListingPageClass> {
           } else if (snapshot.hasData) {
             return new Scaffold(
               resizeToAvoidBottomInset: false,
-              appBar: searchBar.build(context),
+              appBar: AppBarWidget(
+                textTitle: widget.name,
+              ),
               body: _buildBody(),
             );
           } else {
@@ -127,7 +85,28 @@ class _CategoryListingPageClassState extends State<CategoryListingPageClass> {
     return Column(
       children: [
         _buildVerticalSpace(height: 39),
-        MyApp.searchBarBuilderStatic(searchController),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: MyApp.searchBarBuilderStatic(searchController),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: IconButton(
+                icon: Icon(Icons.shopping_cart, size: 35),
+                color: K_PRIMARY_COLOR_LIGHT,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CartListingPage()),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
         _buildVerticalSpace(height: 46),
         Expanded(child: _listBuilder()),
       ],

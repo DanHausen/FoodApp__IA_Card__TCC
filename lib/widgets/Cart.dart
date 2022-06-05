@@ -46,4 +46,10 @@ class Cart {
     totalPrice -= priceSelected;
     cartList.remove(_key);
   }
+
+  static void clearCart() {
+    cartList.clear();
+    cartAmount = 0;
+    totalPrice = 0.0;
+  }
 }

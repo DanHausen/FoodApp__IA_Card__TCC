@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ia_card/constants.dart';
+import 'package:ia_card/pages/Customer/finish_purchase.dart';
+import 'package:ia_card/widgets/appBar.dart';
 import 'package:ia_card/widgets/cart.dart';
 
 class CartListingPage extends StatefulWidget {
@@ -19,25 +21,7 @@ class _CartListingPageState extends State<CartListingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 70,
-        centerTitle: true,
-        title: Column(
-          children: [
-            Text(
-              'Seu carrinho',
-              style: GoogleFonts.passionOne(
-                  fontStyle: FontStyle.normal, fontSize: 40),
-            ),
-          ],
-        ),
-        backgroundColor: K_PRIMARY_COLOR_LIGHT,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(25),
-          ),
-        ),
-      ),
+      appBar: AppBarWidget(textTitle: "Seu carrinho"),
       body: Column(
         children: [
           Padding(
@@ -94,7 +78,14 @@ class _CartListingPageState extends State<CartListingPage> {
             primary: K_PRIMARY_COLOR_LIGHT,
             elevation: 0.0,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      FinishPurchasePage(cartTotalPrice: cartTotalPrice)),
+            );
+          },
           child: Text(
             "Finalizar compra",
             style: GoogleFonts.passionOne(

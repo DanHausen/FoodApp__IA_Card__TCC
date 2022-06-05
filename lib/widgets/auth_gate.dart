@@ -53,7 +53,7 @@ class AuthGate extends StatelessWidget {
     QuerySnapshot querySnapshot = await _collectionRef.get();
     final allData = querySnapshot.docs.map((doc) => doc['email']).toList();
 
-    print(allData);
+    //print(allData);
 
     if (FirebaseAuth.instance.currentUser == null) {
       Navigator.pushAndRemoveUntil(

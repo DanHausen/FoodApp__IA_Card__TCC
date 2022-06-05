@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_search_bar/flutter_search_bar.dart';
 import 'package:ia_card/constants.dart';
 import 'package:ia_card/pages/Customer/category_listing_page.dart';
 import 'package:ia_card/pages/Customer/cart_listing_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:ia_card/pages/user_profile_page.dart';
+import 'package:ia_card/pages/Customer/user_profile_page.dart';
+import 'package:ia_card/widgets/appBar.dart';
+import 'package:ia_card/widgets/post_get_firebase.dart';
 
 import '../../main.dart';
 import 'customer_purchase_history.dart';
@@ -33,24 +34,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: searchBar.build(context),
-      body: _buildBody(),
-    );
-  }
-
-  AppBar buildAppBar(BuildContext context) {
-    return new AppBar(
-      toolbarHeight: 70,
-      elevation: 1,
-      centerTitle: true,
-      title: new Text(
-        'Restaurante',
-        style: GoogleFonts.passionOne(
-            fontStyle: FontStyle.normal, fontSize: 40, color: Colors.white),
-      ),
-      actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: 25.0),
+      appBar: AppBarWidget(
+        textTitle: "Restaurante",
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 25.0),
           child: new IconButton(
             icon: new Icon(Icons.person),
             iconSize: 30,
@@ -64,23 +51,9 @@ class _HomePageState extends State<HomePage> {
             },
           ),
         ),
-      ],
-      backgroundColor: K_PRIMARY_COLOR_LIGHT,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(25),
-        ),
       ),
+      body: _buildBody(),
     );
-  }
-
-  late SearchBar searchBar;
-  _HomePageState() {
-    searchBar = new SearchBar(
-        inBar: false,
-        setState: setState,
-        onSubmitted: print,
-        buildDefaultAppBar: buildAppBar);
   }
 
   _buildBody() {
@@ -178,11 +151,13 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         onPressed: () {
+          ToFirebaseWidget.getCustomerHistory(
+              FirebaseAuth.instance.currentUser?.uid);
           Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) =>
-                    HistoryListingPageClass(name: "Historico")),
+                    HistoryListingPageClass(costumerName: "Historico")),
           );
         },
       ),
